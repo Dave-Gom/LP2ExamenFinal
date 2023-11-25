@@ -1,16 +1,18 @@
 package Interfaz;
 
+import Cuenta.Cuenta;
+
 /**
  * Clase que extiende de Jpanel lo cual servira para mostrar
- * la interfaz de Pagos
+ * la interfaz de Cuenta
  * @author AlanNuñez
  */
-public class Pagos extends javax.swing.JPanel {
+public class InterfazCuenta extends javax.swing.JPanel {
 
     /**
-     * Creates new form Pagos
+     * Creates new form Cuenta
      */
-    public Pagos() {
+    public InterfazCuenta() {
         initComponents();
     }
 
@@ -23,33 +25,32 @@ public class Pagos extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
-        setPreferredSize(new java.awt.Dimension(495, 280));
+        jLabel1.setText("jLabel1");
 
-        jPanel1.setBackground(new java.awt.Color(255, 204, 204));
-        jPanel1.setForeground(new java.awt.Color(255, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(153, 153, 255));
 
-        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Los pagos son:");
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Cuenta Corriente");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(224, 224, 224)
-                .addComponent(jLabel1)
-                .addContainerGap(270, Short.MAX_VALUE))
+                .addGap(64, 64, 64)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(399, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(jLabel1)
-                .addContainerGap(305, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(314, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -67,10 +68,15 @@ public class Pagos extends javax.swing.JPanel {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private void cargarCuenta(){
+        Cuenta CuentaAct = new Cuenta();
+    }
+            
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

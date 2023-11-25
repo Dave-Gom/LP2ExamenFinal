@@ -5,12 +5,12 @@ package Interfaz;
  * la interfaz de Tarjetas
  * @author AlanNuñez
  */
-public class Tarjetas extends javax.swing.JPanel {
+public class InterfazTarjetas extends javax.swing.JPanel {
 
     /**
      * Creates new form Tarjetas
      */
-    public Tarjetas() {
+    public InterfazTarjetas() {
         initComponents();
     }
 

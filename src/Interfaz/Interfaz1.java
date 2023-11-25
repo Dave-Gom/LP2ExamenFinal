@@ -16,7 +16,7 @@ public class Interfaz1 extends javax.swing.JFrame {
      */
     public Interfaz1() {
         initComponents();
-        Home h1 = new Home();
+        InterfazHome h1 = new InterfazHome();
         showPanel(h1);
     }
 
@@ -176,32 +176,32 @@ public class Interfaz1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void TarjetasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TarjetasActionPerformed
-        Tarjetas t1 = new Tarjetas();
+        InterfazTarjetas t1 = new InterfazTarjetas();
         showPanel(t1);
     }//GEN-LAST:event_TarjetasActionPerformed
 
     private void CuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CuentaActionPerformed
-        Cuenta c1 = new Cuenta();
+        InterfazCuenta c1 = new InterfazCuenta();
         showPanel(c1);
     }//GEN-LAST:event_CuentaActionPerformed
 
     private void PagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PagosActionPerformed
-        Pagos p1 = new Pagos();
+        InterfazPagos p1 = new InterfazPagos();
         showPanel(p1);
     }//GEN-LAST:event_PagosActionPerformed
 
     private void AyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AyudaActionPerformed
-        Ayuda y1 = new Ayuda();
+        InterfazAyuda y1 = new InterfazAyuda();
         showPanel(y1);
     }//GEN-LAST:event_AyudaActionPerformed
 
     private void TransferenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TransferenciasActionPerformed
-        Transferencias f1 = new Transferencias();
+        InterfazTransferencias f1 = new InterfazTransferencias();
         showPanel(f1);
     }//GEN-LAST:event_TransferenciasActionPerformed
 
     private void HomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeActionPerformed
-        Home h1 = new Home();
+        InterfazHome h1 = new InterfazHome();
         showPanel(h1);
     }//GEN-LAST:event_HomeActionPerformed
     /**

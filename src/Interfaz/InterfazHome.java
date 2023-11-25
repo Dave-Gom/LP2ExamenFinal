@@ -5,9 +5,9 @@ package Interfaz;
  * la interfaz de Home, la cual sera la primera pantalla que se mostrara
  * @author AlanNuñez
  */
-public class Home extends javax.swing.JPanel {
+public class InterfazHome extends javax.swing.JPanel {
 
-    public Home() {
+    public InterfazHome() {
         initComponents();
     }
 

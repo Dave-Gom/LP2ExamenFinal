@@ -5,12 +5,12 @@ package Interfaz;
  * la interfaz de transferencias
  * @author AlanNuñez
  */
-public class Transferencias extends javax.swing.JPanel {
+public class InterfazTransferencias extends javax.swing.JPanel {
 
     /**
      * Creates new form Transferencias
      */
-    public Transferencias() {
+    public InterfazTransferencias() {
         initComponents();
     }
 

@@ -5,12 +5,12 @@ package Interfaz;
  * la interfaz de Ayuda
  * @author AlanNuñez
  */
-public class Ayuda extends javax.swing.JPanel {
+public class InterfazAyuda extends javax.swing.JPanel {
 
     /**
      * Creates new form Ayuda
      */
-    public Ayuda() {
+    public InterfazAyuda() {
         initComponents();
     }
 
