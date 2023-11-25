@@ -1,11 +1,13 @@
 package Usuario;
 
+import Cuenta.Cuenta;
 import java.util.Date;
 
 /**
  * Usuario
  */
 public class Usuario {
+    private Cuenta CuentaAct;
     private String ci;
     private String pin;
     private String pinTransaccional;
