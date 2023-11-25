@@ -1,7 +1,7 @@
-package lp2final;
+package main;
 
-import Interfaz.Interfaz1;
-public class Lp2Final {
+import Interfaz.InterfazEstatica;
+public class Lp2FinalMain {
 
     /**
      * @param args the command line arguments
@@ -9,7 +9,7 @@ public class Lp2Final {
     public static void main(String[] args) {
         // TODO code application logic here
         System.out.println("Prueba");
-        Interfaz1 p1 = new Interfaz1();
+        InterfazEstatica p1 = new InterfazEstatica();
         p1.setVisible(true);
         
     }
