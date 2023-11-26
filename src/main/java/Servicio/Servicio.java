@@ -1,13 +1,15 @@
 package Servicio;
 
-import BaseDeDatos.BaseDeDatos;
-import Cuenta.Cuenta;
 import java.util.Random;
+
+import Cuenta.Cuenta;
 
 /**
  * La clase Servicio representa un servicio que puede ser consultado o pagado.
- * Contiene información sobre el nombre del servicio, la entidad emisora y el monto.
- * Además, proporciona métodos para consultar el monto del servicio y realizar un pago.
+ * Contiene información sobre el nombre del servicio, la entidad emisora y el
+ * monto.
+ * Además, proporciona métodos para consultar el monto del servicio y realizar
+ * un pago.
  * Los pagos realizados se registran en la base de datos asociada a la cuenta.
  *
  * @author David Gomez
@@ -30,7 +32,8 @@ public class Servicio {
     }
 
     /**
-     * Consulta el monto del servicio. Si el monto aún no ha sido asignado, se genera un valor aleatorio.
+     * Consulta el monto del servicio. Si el monto aún no ha sido asignado, se
+     * genera un valor aleatorio.
      *
      * @return El monto del servicio.
      */
@@ -45,7 +48,8 @@ public class Servicio {
      * Realiza el pago del servicio utilizando la cuenta proporcionada.
      *
      * @param miCuenta La cuenta desde la cual se realizará el pago.
-     * @throws Exception Si la cuenta no tiene saldo suficiente para realizar el pago.
+     * @throws Exception Si la cuenta no tiene saldo suficiente para realizar el
+     *                   pago.
      */
     public void pagar(Cuenta miCuenta) throws Exception {
         if (miCuenta.getSaldo() >= this.monto) {
