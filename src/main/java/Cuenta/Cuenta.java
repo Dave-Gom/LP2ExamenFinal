@@ -1,27 +1,30 @@
 package Cuenta;
 
-import BaseDeDatos.BaseDeDatos;
-import Usuario.Usuario;
 import java.util.ArrayList;
+
+import BaseDeDatos.BaseDeDatos;
 import Extracto.Extracto;
+import Usuario.Usuario;
 
 public class Cuenta {
 
     private int idCuenta;
     private String ciUser;
     private double saldo;
-    //para saber saber si la cuenta
-    //es del tipo corriente
+    // para saber saber si la cuenta
+    // es del tipo corriente
     private String tipoCuenta;
     private String infoPersonal;
     private String nroCuenta;
     public BaseDeDatos base;
 
-    public Cuenta(int idCuenta, String ciUser, int saldo, String tipoCuenta, String infoPersonal, String nroCuenta,/* @Author: DG */ BaseDeDatos base) throws Exception {
+    public Cuenta(int idCuenta, String ciUser, int saldo, String tipoCuenta, String infoPersonal, String nroCuenta,
+            /* @Author: DG */ BaseDeDatos base) throws Exception {
 
         // validacion de existencia de Usuario, @author: David Gomez
         if (base.getUserByCI(ciUser) == null) {
-            throw new Exception("Foreign key violation: El valor " + ciUser + " en la columna 'ci' no tiene una correspondencia en la tabla 'users'");
+            throw new Exception("Foreign key violation: El valor " + ciUser
+                    + " en la columna 'ci' no tiene una correspondencia en la tabla 'users'");
         }
 
         this.idCuenta = idCuenta;
@@ -83,7 +86,7 @@ public class Cuenta {
      * registra la transferencia en la base de datos proporcionada.
      *
      * @param destino La cuenta de destino a la que se va a transferir el saldo.
-     * @param monto El monto que se va a transferir.
+     * @param monto   El monto que se va a transferir.
      *
      * @author David Gomez
      */
@@ -110,7 +113,8 @@ public class Cuenta {
             }
 
         } catch (Exception e) {
-            // En caso de que ocurra una excepción, imprime el mensaje de la excepción en la consola.
+            // En caso de que ocurra una excepción, imprime el mensaje de la excepción en la
+            // consola.
             System.out.println(e.getMessage());
         }
     }
@@ -124,7 +128,8 @@ public class Cuenta {
      * @author David Gomez
      */
     public Usuario getTitular() {
-        // Utiliza la cédula de identidad del usuario asociado para obtener al titular de la cuenta
+        // Utiliza la cédula de identidad del usuario asociado para obtener al titular
+        // de la cuenta
         return base.getUserByCI(ciUser);
     }
 
@@ -132,7 +137,7 @@ public class Cuenta {
      * Obtiene el extracto de la cuenta asociada a partir de la base de datos.
      *
      * @return Una lista de objetos Extracto que representan el extracto de la
-     * cuenta.
+     *         cuenta.
      * 
      * @author David Gomez
      */

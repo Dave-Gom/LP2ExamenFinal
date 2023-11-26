@@ -1,21 +1,21 @@
 package BaseDeDatos;
 
-import Cuenta.Cuenta;
-import Servicio.PagoServicio;
-import TarjetaDeCredito.TarjetaDeCredito;
 import java.util.ArrayList;
-import Usuario.Usuario;
-import TarjetaDeCredito.TransaccionTarjeta;
-import TarjetaDeCredito.PagoTarjeta;
-
-import Cuenta.Transferencia;
 import java.util.Date;
-import Extracto.Extracto;
 
+import Cuenta.Cuenta;
+import Cuenta.Transferencia;
+import Extracto.Extracto;
+import Servicio.PagoServicio;
+import TarjetaDeCredito.PagoTarjeta;
+import TarjetaDeCredito.TarjetaDeCredito;
+import TarjetaDeCredito.TransaccionTarjeta;
+import Usuario.Usuario;
 
 /**
  * La clase BaseDeDatos representa la base de datos principal del sistema.
- * Contiene listas de usuarios, cuentas, tarjetas, transacciones de tarjetas, transferencias, pagos de servicios
+ * Contiene listas de usuarios, cuentas, tarjetas, transacciones de tarjetas,
+ * transferencias, pagos de servicios
  * y pagos de tarjetas.
  *
  * @author David Gomez
@@ -31,7 +31,8 @@ public class BaseDeDatos {
 
     /**
      * Constructor de la clase BaseDeDatos.
-     * Inicializa las listas de usuarios, cuentas, tarjetas, transacciones de tarjetas, transferencias, pagos de servicios.
+     * Inicializa las listas de usuarios, cuentas, tarjetas, transacciones de
+     * tarjetas, transferencias, pagos de servicios.
      */
     public BaseDeDatos() {
         usuarios = new ArrayList<>();
@@ -52,11 +53,11 @@ public class BaseDeDatos {
      */
     public void addUsuario(Usuario nuevoUser) throws Exception {
         for (Usuario usuario : usuarios) {
-            if(usuario.getCi().compareTo(nuevoUser.getCi()) == 0){
+            if (usuario.getCi().compareTo(nuevoUser.getCi()) == 0) {
                 throw new Exception("Duplicate entry 'ci' for key 'ci_UNIQUE'");
             }
         }
-        
+
         usuarios.add(nuevoUser);
     }
 
@@ -109,32 +110,33 @@ public class BaseDeDatos {
      * @param nuevaCuenta La cuenta que se va a agregar.
      */
     public void addCuenta(Cuenta nuevaCuenta) throws Exception {
-        if(getCuentaByNro(nuevaCuenta.getNroCuenta()) != null){
+        if (getCuentaByNro(nuevaCuenta.getNroCuenta()) != null) {
             throw new Exception("Duplicate entry 'nroCuenta' for key 'cuentas.nroCuenta_UNIQUE");
         }
         cuentas.add(nuevaCuenta);
     }
-    
-    public Cuenta getCuentaByNro(String numeroDeCuenta){
+
+    public Cuenta getCuentaByNro(String numeroDeCuenta) {
         for (Cuenta cuenta : cuentas) {
-            if(cuenta.getNroCuenta().compareTo(numeroDeCuenta) == 0){
-            return cuenta;
-                    }
+            if (cuenta.getNroCuenta().compareTo(numeroDeCuenta) == 0) {
+                return cuenta;
+            }
         }
         return null;
     }
-        
 
     /**
      * Agrega una nueva tarjeta a la lista de tarjetas.
      *
      * @param nuevaTarjeta La tarjeta que se va a agregar.
-     * @throws Exception Si ya existe una tarjeta con el mismo número en la base de datos.
+     * @throws Exception Si ya existe una tarjeta con el mismo número en la base de
+     *                   datos.
      */
     public void addTarjeta(TarjetaDeCredito nuevaTarjeta) throws Exception {
         for (TarjetaDeCredito tarjeta : tarjetas) {
             if (tarjeta.getNroTarjeta().compareTo(nuevaTarjeta.getNroTarjeta()) == 0) {
-                throw new Exception("Ya existe en la base un registro con numero de tarjeta" + nuevaTarjeta.getNroTarjeta());
+                throw new Exception(
+                        "Ya existe en la base un registro con numero de tarjeta" + nuevaTarjeta.getNroTarjeta());
             }
         }
         tarjetas.add(nuevaTarjeta);
@@ -166,8 +168,7 @@ public class BaseDeDatos {
     public void addPagoTarjeta(PagoTarjeta pago) {
         pagosTarjetas.add(pago);
     }
-    
-    
+
     /**
      * Imprime la representación JSON de los usuarios en la consola.
      */
@@ -184,28 +185,29 @@ public class BaseDeDatos {
         // Imprime la lista de representaciones JSON en la consola
         System.out.println(stringFormateado);
     }
-    
-    
+
     /**
      * Crea un nuevo objeto Usuario con los atributos proporcionados, lo agrega
      * a la lista de usuarios y lo devuelve.
      *
-     * @param ci Cédula de identidad del nuevo usuario.
-     * @param pin PIN de acceso del nuevo usuario.
+     * @param ci               Cédula de identidad del nuevo usuario.
+     * @param pin              PIN de acceso del nuevo usuario.
      * @param pinTransaccional PIN para transacciones del nuevo usuario.
-     * @param email Correo electrónico del nuevo usuario.
-     * @param nacionalidad Nacionalidad del nuevo usuario.
-     * @param nombre Nombre del nuevo usuario.
-     * @param apellido Apellido del nuevo usuario.
-     * @param fechaNacimiento Fecha de nacimiento del nuevo usuario.
-     * @param telefono Número de teléfono del nuevo usuario.
+     * @param email            Correo electrónico del nuevo usuario.
+     * @param nacionalidad     Nacionalidad del nuevo usuario.
+     * @param nombre           Nombre del nuevo usuario.
+     * @param apellido         Apellido del nuevo usuario.
+     * @param fechaNacimiento  Fecha de nacimiento del nuevo usuario.
+     * @param telefono         Número de teléfono del nuevo usuario.
      * @return El nuevo usuario creado y agregado a la lista.
      */
-    public Usuario createUsuario(String ci, String pin, String pinTransaccional, String email, String nacionalidad, String nombre,
+    public Usuario createUsuario(String ci, String pin, String pinTransaccional, String email, String nacionalidad,
+            String nombre,
             String apellido, Date fechaNacimiento, String telefono) {
         try {
             // Crea un nuevo usuario con los atributos proporcionados
-            Usuario nuevoUser = new Usuario(ci, pin, pinTransaccional, email, nacionalidad, nombre, apellido, fechaNacimiento, telefono, this);
+            Usuario nuevoUser = new Usuario(ci, pin, pinTransaccional, email, nacionalidad, nombre, apellido,
+                    fechaNacimiento, telefono, this);
 
             // Agrega el nuevo usuario a la lista de usuarios
             usuarios.add(nuevoUser);
@@ -217,31 +219,29 @@ public class BaseDeDatos {
             return null;
         }
     }
-    
-    
-    public ArrayList<Extracto> getExtractoCuenta(String nroCuenta){
+
+    public ArrayList<Extracto> getExtractoCuenta(String nroCuenta) {
         ArrayList<Extracto> datos = new ArrayList<>();
-        
+
         for (Transferencia Transf : transferencias) {
-            if(Transf.getCuentaOrigen().compareTo(nroCuenta) == 0 || Transf.getBancoDestino().compareTo(nroCuenta) == 0){
+            if (Transf.getCuentaOrigen().compareTo(nroCuenta) == 0
+                    || Transf.getBancoDestino().compareTo(nroCuenta) == 0) {
                 datos.add(Transf);
             }
         }
-        
+
         for (PagoServicio pagoServicio : pagosServ) {
-            if(pagoServicio.getCuentaNro().compareTo(nroCuenta) == 0){
+            if (pagoServicio.getCuentaNro().compareTo(nroCuenta) == 0) {
                 datos.add(pagoServicio);
             }
         }
-        
+
         for (PagoTarjeta pagosTarjeta : pagosTarjetas) {
-            if(pagosTarjeta.getCuentaOrigen().compareTo(nroCuenta) == 0){
+            if (pagosTarjeta.getCuentaOrigen().compareTo(nroCuenta) == 0) {
                 datos.add(pagosTarjeta);
             }
         }
-        
-        
-        
+
         return datos;
     }
 

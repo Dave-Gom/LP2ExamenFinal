@@ -1,13 +1,16 @@
 package Usuario;
 
-import BaseDeDatos.BaseDeDatos;
-import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import BaseDeDatos.BaseDeDatos;
 
 /**
  * La clase Usuario representa un usuario del sistema bancario.
- * Contiene información personal, como nombre, apellido, cédula de identidad, etc.
- * Además, proporciona métodos para obtener y establecer cada uno de los atributos.
+ * Contiene información personal, como nombre, apellido, cédula de identidad,
+ * etc.
+ * Además, proporciona métodos para obtener y establecer cada uno de los
+ * atributos.
  * 
  * @author David Gomez
  */
@@ -26,16 +29,17 @@ public class Usuario {
     /**
      * Constructor de la clase Usuario.
      *
-     * @param ci Cédula de identidad.
-     * @param pin PIN de acceso.
+     * @param ci               Cédula de identidad.
+     * @param pin              PIN de acceso.
      * @param pinTransaccional PIN para transacciones.
-     * @param email Correo electrónico.
-     * @param nacionalidad Nacionalidad.
-     * @param nombre Nombre.
-     * @param apellido Apellido.
-     * @param fechaNacimiento Fecha de nacimiento.
-     * @param telefono Número de teléfono.
-     * @param miBase direccion de memoria de la base en la que esta almacenado el usuario
+     * @param email            Correo electrónico.
+     * @param nacionalidad     Nacionalidad.
+     * @param nombre           Nombre.
+     * @param apellido         Apellido.
+     * @param fechaNacimiento  Fecha de nacimiento.
+     * @param telefono         Número de teléfono.
+     * @param miBase           direccion de memoria de la base en la que esta
+     *                         almacenado el usuario
      * 
      * @throws Exeption si ya existe el usuario con la misma ci en la base;
      */
@@ -215,8 +219,7 @@ public class Usuario {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-    
-    
+
     /**
      * Imprime los atributos del usuario en formato JSON con la fecha formateada.
      *

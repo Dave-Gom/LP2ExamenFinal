@@ -1,6 +1,6 @@
-package Interfaz;
+package main.java.Interfaz;
 
-import Cuenta.Cuenta;
+import main.java.Cuenta.Cuenta;
 
 /**
  * Clase que extiende de Jpanel lo cual servira para mostrar
