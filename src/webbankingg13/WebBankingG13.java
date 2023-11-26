@@ -1,4 +1,4 @@
-package com.mycompany.webbankingg13;
+package webbankingg13;
 
 import java.util.Date;
 
