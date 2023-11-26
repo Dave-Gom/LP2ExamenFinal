@@ -1,4 +1,3 @@
-package main.java.com.mycompany.webbankingg13;
 
 package com.mycompany.webbankingg13;
 

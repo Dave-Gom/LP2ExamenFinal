@@ -1,4 +1,4 @@
-package main.java.Interfaz;
+package Interfaz;
 
 /**
  * Clase que extiende de Jpanel lo cual servira para mostrar

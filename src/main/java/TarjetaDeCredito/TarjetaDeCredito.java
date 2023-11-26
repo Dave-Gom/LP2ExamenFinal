@@ -1,4 +1,4 @@
-package main.java.TarjetaDeCredito;
+package TarjetaDeCredito;
 
 import BaseDeDatos.BaseDeDatos;
 import Cuenta.Cuenta;
