@@ -5,20 +5,19 @@ import java.util.ArrayList;
 import BaseDeDatos.BaseDeDatos;
 import Extracto.Extracto;
 import Usuario.Usuario;
+import java.text.DecimalFormat;
 
 public class Cuenta {
 
-    private int idCuenta;
     private String ciUser;
     private double saldo;
     // para saber saber si la cuenta
     // es del tipo corriente
     private String tipoCuenta;
-    private String infoPersonal;
     private String nroCuenta;
     public BaseDeDatos base;
 
-    public Cuenta(int idCuenta, String ciUser, int saldo, String tipoCuenta, String infoPersonal, String nroCuenta,
+    public Cuenta(String ciUser, String tipoCuenta, double SaldoInicial,
             /* @Author: DG */ BaseDeDatos base) throws Exception {
 
         // validacion de existencia de Usuario, @author: David Gomez
@@ -27,19 +26,15 @@ public class Cuenta {
                     + " en la columna 'ci' no tiene una correspondencia en la tabla 'users'");
         }
 
-        this.idCuenta = idCuenta;
         this.ciUser = ciUser;
         this.tipoCuenta = tipoCuenta;
-        this.saldo = saldo;
-        this.infoPersonal = infoPersonal;
-        this.nroCuenta = nroCuenta;
+        this.saldo = SaldoInicial;
+        Integer nuevoNumero = base.getCuentas().size() + 1;
+        this.nroCuenta = nuevoNumero.toString();
         this.base = base;
         base.addCuenta(this);
     }
 
-    public int getIdCuenta() {
-        return idCuenta;
-    }
 
     /**
      * Obtiene la cédula de identidad asociada a la cuenta.
@@ -60,9 +55,6 @@ public class Cuenta {
         return tipoCuenta;
     }
 
-    public String getInfoPersonal() {
-        return infoPersonal;
-    }
 
     public String getNroCuenta() {
         return nroCuenta;
@@ -143,6 +135,29 @@ public class Cuenta {
      */
     public ArrayList<Extracto> getExtracto() {
         return this.base.getExtractoCuenta(this.nroCuenta);
+    }
+    
+        /**
+     * Genera una representación en formato JSON de los atributos de la cuenta.
+     *
+     * @return Una cadena que representa los atributos en formato JSON.
+     * 
+     * @author David Gomez
+     */
+    public String toJsonString() {
+        // Formatea el saldo con dos decimales
+        DecimalFormat df = new DecimalFormat("#.00");
+        String saldoFormateado = df.format(saldo);
+
+        // Construye manualmente la representación JSON
+        String jsonString = "{"
+                + "\"ciUser\":\"" + ciUser + "\","
+                + "\"saldo\":" + saldoFormateado + ","
+                + "\"tipoCuenta\":\"" + tipoCuenta + "\","
+                + "\"nroCuenta\":\"" + nroCuenta + "\""
+                + "}";
+
+        return jsonString;
     }
 
 }

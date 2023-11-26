@@ -4,6 +4,7 @@ package com.mycompany.webbankingg13;
 import java.util.Date;
 
 import BaseDeDatos.BaseDeDatos;
+import Cuenta.Cuenta;
 import Interfaz.InterfazEstatica;
 import Usuario.Usuario;
 
@@ -13,17 +14,22 @@ import Usuario.Usuario;
  */
 public class WebBankingG13 {
     public static void main(String[] args) {
+        
         BaseDeDatos mainDB = new BaseDeDatos();
         Usuario user1 = mainDB.createUsuario("6660354", "123456", "654321", "davegomez426@gmail.com", "Paraguaya",
                 "David Emmanuel", "Gomez Arca", new Date(1, 23, 1983), "0772411806");
-        Usuario user2 = mainDB.createUsuario("6660354", "123456", "654321", "davegomez426@gmail.com", "Paraguaya",
-                "David Emmanuel", "Gomez Arca", new Date(1, 23, 1983), "0772411806");
-
-        if (user2 != null) {
-            System.out.println("Creo el user2");
-        } else {
-            System.out.println("No creo el user2");
-        }
+        
+        Usuario user2 = mainDB.createUsuario("5173040", "123456", "654321", "davegomez426@gmail.com", "Paraguaya",
+                "Jaime", "Nuñez", new Date(1, 23, 1983), "0772411806");
+        
+        Cuenta nuevaCuenta = mainDB.createCuenta(user1.getCi(), 0, "Cuenta Corriente");
+        Cuenta segundaCuenta = mainDB.createCuenta(user2.getCi(), 0, "Caja de Ahorro");
+        
+        mainDB.printCuentas();
+        
+        
+        
+        
 
         // java.awt.EventQueue.invokeLater(new Runnable() {
         // public void run() {
