@@ -11,7 +11,7 @@ public class Cuenta {
 
     private String ciUser;
     private double saldo;
-    // para saber saber si la cuenta
+    // para saber saber si la cuentas
     // es del tipo corriente
     private String tipoCuenta;
     private String nroCuenta;
@@ -35,7 +35,6 @@ public class Cuenta {
         base.addCuenta(this);
     }
 
-
     /**
      * Obtiene la cédula de identidad asociada a la cuenta.
      *
@@ -54,7 +53,6 @@ public class Cuenta {
     public String getTipoCuenta() {
         return tipoCuenta;
     }
-
 
     public String getNroCuenta() {
         return nroCuenta;
@@ -136,8 +134,8 @@ public class Cuenta {
     public ArrayList<Extracto> getExtracto() {
         return this.base.getExtractoCuenta(this.nroCuenta);
     }
-    
-        /**
+
+    /**
      * Genera una representación en formato JSON de los atributos de la cuenta.
      *
      * @return Una cadena que representa los atributos en formato JSON.
