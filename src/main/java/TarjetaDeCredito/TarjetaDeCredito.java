@@ -1,4 +1,4 @@
-package TarjetaDeCredito;
+package main.java.TarjetaDeCredito;
 
 import java.sql.Date;
 import java.util.Calendar;

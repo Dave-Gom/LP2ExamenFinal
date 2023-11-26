@@ -1,6 +1,6 @@
-package Usuario;
+package main.java.Usuario;
 
-import Cuenta.Cuenta;
+import main.java.Cuenta.Cuenta;
 import java.util.Date;
 
 /**

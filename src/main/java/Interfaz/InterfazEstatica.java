@@ -1,4 +1,4 @@
-package Interfaz;
+package main.java.Interfaz;
 
 import java.awt.BorderLayout;
 import javax.swing.JPanel;

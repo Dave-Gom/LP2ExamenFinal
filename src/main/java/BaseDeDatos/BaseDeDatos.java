@@ -1,8 +1,8 @@
-package BaseDeDatos;
+package main.java.BaseDeDatos;
 
 import java.util.ArrayList;
 
-import Usuario.Usuario;
+import main.java.Usuario.Usuario;
 
 class BaseDeDatos {
     private ArrayList<Usuario> usuarios;

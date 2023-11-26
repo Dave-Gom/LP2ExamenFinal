@@ -1,23 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Project/Maven2/JavaApp/src/main/java/${packagePath}/${mainClassName}.java to edit this template
- */
+package main.java.com.mycompany.webbankingg13;
 
-package com.mycompany.webbankingg13;
-
-import Interfaz.InterfazEstatica;
-
-/**
- *
- * @author bancocontinental05
- */
+import main.java.Interfaz.InterfazEstatica;
 public class WebBankingG13 {
-
     public static void main(String[] args) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new InterfazEstatica().setVisible(true);
-            }
-        });
+        InterfazEstatica p1 = new InterfazEstatica();
+        p1.setVisible(true);
     }
 }

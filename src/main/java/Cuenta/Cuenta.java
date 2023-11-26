@@ -1,4 +1,4 @@
-package Cuenta;
+package main.java.Cuenta;
 public class Cuenta{
     private int idCuenta;
     private String titular;
