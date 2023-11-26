@@ -1,11 +1,11 @@
 package Cuenta;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import BaseDeDatos.BaseDeDatos;
 import Extracto.Extracto;
 import Usuario.Usuario;
-import java.text.DecimalFormat;
 
 public class Cuenta {
 
