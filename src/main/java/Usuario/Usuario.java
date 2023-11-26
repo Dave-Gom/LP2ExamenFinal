@@ -1,6 +1,5 @@
 package Usuario;
 
-import Cuenta.Cuenta;
 import java.util.Date;
 
 /**
