@@ -2,15 +2,15 @@ package main.java.Interfaz;
 
 /**
  * Clase que extiende de Jpanel lo cual servira para mostrar
- * la interfaz de Ayuda
+ * la interfaz de InterfazAcercaDelSistema
  * @author AlanNuñez
  */
-public class InterfazAyuda extends javax.swing.JPanel {
+public class InterfazAcercaDelSistema extends javax.swing.JPanel {
 
     /**
      * Creates new form Ayuda
      */
-    public InterfazAyuda() {
+    public InterfazAcercaDelSistema() {
         initComponents();
     }
 
