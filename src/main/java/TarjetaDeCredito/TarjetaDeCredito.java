@@ -1,6 +1,7 @@
 package TarjetaDeCredito;
 
 import BaseDeDatos.BaseDeDatos;
+import Cuenta.Cuenta;
 import java.sql.Date;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -22,6 +23,7 @@ public class TarjetaDeCredito {
     private Double deudaAlcierre;
     private Double lineaCredito;
     private Date fechaCierre;
+    public BaseDeDatos miBase;
 
     /**
      * Constructor de la clase TarjetaDeCredito.
@@ -32,7 +34,8 @@ public class TarjetaDeCredito {
      * @param afinidad Afinidad de la tarjeta.
      * @param lineaC   Línea de crédito de la tarjeta.
      */
-    public TarjetaDeCredito(String nroT, String tipo, String pinT, String afinidad, Double lineaC) {
+    public TarjetaDeCredito(String nroT, String tipo, String pinT, String afinidad, Double lineaC, BaseDeDatos base) {
+        this.miBase = base;
         this.nroTarjeta = nroT;
         this.tipoTarjeta = tipo;
         this.pinTarjeta = pinT;
@@ -51,6 +54,8 @@ public class TarjetaDeCredito {
         calendarCierre.add(Calendar.MONTH, 1);
         calendarCierre.set(Calendar.DAY_OF_MONTH, 1);
         this.fechaCierre = (Date) calendarCierre.getTime();
+        
+        
     }
 
     // Métodos getter para acceder a la información de la tarjeta
@@ -136,11 +141,47 @@ public class TarjetaDeCredito {
         return vencimiento;
     }
     
-    public void guardarEnbase(BaseDeDatos miBase){
+    /**
+     * Este método guarda la tarjeta actual en la base de datos proporcionada.
+     *
+     */
+    public void guardarEnbase() {
         try {
+            // Llama al método addTarjeta de la base de datos para agregar la tarjeta actual.
             miBase.addTarjeta(this);
         } catch (Exception e) {
+            // En caso de que ocurra una excepción, imprime el mensaje de la excepción en la consola.
             System.out.println(e.getMessage());
         }
     }
+    
+    
+    public void pagarDeuda(Cuenta cuentaOrigen, double monto) throws Exception{
+        if(cuentaOrigen.getSaldo() >= monto){
+            cuentaOrigen.setSaldo(cuentaOrigen.getSaldo()-monto);
+            this.deudaTotal -= monto;
+            this.deudaAlcierre -= monto;
+            
+            PagoTarjeta miPago = new PagoTarjeta(cuentaOrigen.getNroCuenta(),this.nroTarjeta , monto);
+            this.miBase.addPagoTarjeta(miPago);
+        }
+        else{
+            throw new Exception("No poses slado suficiente para pagar este monto");
+        }
+    }
+    
+    
+    public void pagar(double monto, String Concepto) throws Exception{
+        if(deudaTotal + monto <= lineaCredito){
+            deudaTotal += monto;
+            deudaAlcierre += monto;
+            
+            TransaccionTarjeta transac = new TransaccionTarjeta(this.nroTarjeta, monto, Concepto);
+            miBase.AddTranaccionTarjeta(transac);
+        }
+        else {
+            throw new Exception("Tarjeta Sobregirada");
+        }
+    }
+
 }

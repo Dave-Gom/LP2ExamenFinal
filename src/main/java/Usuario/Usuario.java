@@ -4,23 +4,38 @@ import Cuenta.Cuenta;
 import java.util.Date;
 
 /**
- * Usuario
+ * La clase Usuario representa un usuario del sistema bancario.
+ * Contiene información personal, como nombre, apellido, cédula de identidad, etc.
+ * Además, proporciona métodos para obtener y establecer cada uno de los atributos.
+ * 
+ * @author David Gomez
  */
 public class Usuario {
-    private Cuenta CuentaAct;
-    private String ci;
-    private String pin;
-    private String pinTransaccional;
-    private String email;
-    private String nacionalidad;
-    private String nombre;
-    private String apellido;
-    private String telefono;
-    private Date fechaNacimiento;
+    private String ci; // Cédula de identidad
+    private String pin; // PIN de acceso
+    private String pinTransaccional; // PIN para transacciones
+    private String email; // Correo electrónico
+    private String nacionalidad; // Nacionalidad
+    private String nombre; // Nombre
+    private String apellido; // Apellido
+    private String telefono; // Número de teléfono
+    private Date fechaNacimiento; // Fecha de nacimiento
 
+    /**
+     * Constructor de la clase Usuario.
+     *
+     * @param ci Cédula de identidad.
+     * @param pin PIN de acceso.
+     * @param pinTransaccional PIN para transacciones.
+     * @param email Correo electrónico.
+     * @param nacionalidad Nacionalidad.
+     * @param nombre Nombre.
+     * @param apellido Apellido.
+     * @param fechaNacimiento Fecha de nacimiento.
+     * @param telefono Número de teléfono.
+     */
     public Usuario(String ci, String pin, String pinTransaccional, String email, String nacionalidad, String nombre,
             String apellido, Date fechaNacimiento, String telefono) {
-
         this.ci = ci;
         this.apellido = apellido;
         this.email = email;
@@ -30,43 +45,167 @@ public class Usuario {
         this.pin = pin;
         this.nombre = nombre;
         this.pinTransaccional = pinTransaccional;
-
     }
 
+    /**
+     * Obtiene el apellido del usuario.
+     *
+     * @return El apellido del usuario.
+     */
     public String getApellido() {
         return apellido;
     }
 
+    /**
+     * Obtiene la cédula de identidad del usuario.
+     *
+     * @return La cédula de identidad del usuario.
+     */
     public String getCi() {
         return ci;
     }
 
+    /**
+     * Obtiene el correo electrónico del usuario.
+     *
+     * @return El correo electrónico del usuario.
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * Obtiene la fecha de nacimiento del usuario.
+     *
+     * @return La fecha de nacimiento del usuario.
+     */
     public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
+    /**
+     * Obtiene la nacionalidad del usuario.
+     *
+     * @return La nacionalidad del usuario.
+     */
     public String getNacionalidad() {
         return nacionalidad;
     }
 
+    /**
+     * Obtiene el nombre del usuario.
+     *
+     * @return El nombre del usuario.
+     */
     public String getNombre() {
         return nombre;
     }
 
+    /**
+     * Obtiene el PIN de acceso del usuario.
+     *
+     * @return El PIN de acceso del usuario.
+     */
     public String getPin() {
         return pin;
     }
 
+    /**
+     * Obtiene el PIN transaccional del usuario.
+     *
+     * @return El PIN transaccional del usuario.
+     */
     public String getPinTransaccional() {
         return pinTransaccional;
     }
 
+    /**
+     * Obtiene el número de teléfono del usuario.
+     *
+     * @return El número de teléfono del usuario.
+     */
     public String getTelefono() {
         return telefono;
     }
 
+    /**
+     * Establece el apellido del usuario.
+     *
+     * @param apellido El nuevo apellido del usuario.
+     */
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    /**
+     * Establece la cédula de identidad del usuario.
+     *
+     * @param ci La nueva cédula de identidad del usuario.
+     */
+    public void setCi(String ci) {
+        this.ci = ci;
+    }
+
+    /**
+     * Establece el correo electrónico del usuario.
+     *
+     * @param email El nuevo correo electrónico del usuario.
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * Establece la fecha de nacimiento del usuario.
+     *
+     * @param fechaNacimiento La nueva fecha de nacimiento del usuario.
+     */
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    /**
+     * Establece la nacionalidad del usuario.
+     *
+     * @param nacionalidad La nueva nacionalidad del usuario.
+     */
+    public void setNacionalidad(String nacionalidad) {
+        this.nacionalidad = nacionalidad;
+    }
+
+    /**
+     * Establece el nombre del usuario.
+     *
+     * @param nombre El nuevo nombre del usuario.
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    /**
+     * Establece el PIN de acceso del usuario.
+     *
+     * @param pin El nuevo PIN de acceso del usuario.
+     */
+    public void setPin(String pin) {
+        this.pin = pin;
+    }
+
+    /**
+     * Establece el PIN transaccional del usuario.
+     *
+     * @param pinTransaccional El nuevo PIN transaccional del usuario.
+     */
+    public void setPinTransaccional(String pinTransaccional) {
+        this.pinTransaccional = pinTransaccional;
+    }
+
+    /**
+     * Establece el número de teléfono del usuario.
+     *
+     * @param telefono El nuevo número de teléfono del usuario.
+     */
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
 }
