@@ -7,6 +7,7 @@ import Cuenta.Cuenta;
 import Cuenta.Transferencia;
 import Extracto.Extracto;
 import Servicio.PagoServicio;
+import Servicio.Servicio;
 import TarjetaDeCredito.PagoTarjeta;
 import TarjetaDeCredito.TarjetaDeCredito;
 import TarjetaDeCredito.TransaccionTarjeta;
@@ -27,13 +28,14 @@ public class BaseDeDatos {
     private ArrayList<TransaccionTarjeta> transaccionesTarjeta;
     private ArrayList<Transferencia> transferencias;
     private ArrayList<PagoServicio> pagosServ;
+    private ArrayList<Servicio> serviciosDisponibles;
     private ArrayList<PagoTarjeta> pagosTarjetas;
 
     /**
      * Constructor de la clase BaseDeDatos. Inicializa las listas de usuarios,
      * cuentas, tarjetas, transacciones de tarjetas, transferencias, pagos de
      * servicios.
-     * 
+     *
      * @author David Gomez
      */
     public BaseDeDatos() {
@@ -44,6 +46,7 @@ public class BaseDeDatos {
         transferencias = new ArrayList<>();
         pagosServ = new ArrayList<>();
         pagosTarjetas = new ArrayList<>();
+        serviciosDisponibles = new ArrayList<>();
     }
 
     // Métodos para agregar diferentes tipos de registros a la base de datos
@@ -51,7 +54,7 @@ public class BaseDeDatos {
      * Agrega un nuevo usuario a la lista de usuarios.
      *
      * @param nuevoUser El usuario que se va a agregar.
-     * 
+     *
      * @author David Gomez
      */
     public void addUsuario(Usuario nuevoUser) throws Exception {
@@ -68,7 +71,7 @@ public class BaseDeDatos {
      * Obtiene la lista de usuarios almacenados en la base de datos.
      *
      * @return La lista de usuarios.
-     * 
+     *
      * @author David Gomez
      */
     public ArrayList<Usuario> getUsuarios() {
@@ -80,7 +83,7 @@ public class BaseDeDatos {
      *
      * @param id El identificador único del usuario.
      * @return El usuario con el identificador proporcionado.
-     * 
+     *
      * @author David Gomez
      */
     public Usuario findUsuarioById(int id) {
@@ -92,8 +95,8 @@ public class BaseDeDatos {
      *
      * @param cedula El número de cédula de identidad del usuario.
      * @return El usuario con la cédula proporcionada, o null si no se
-     *         encuentra.
-     * 
+     * encuentra.
+     *
      * @author David Gomez
      */
     public Usuario getUserByCI(String cedula) {
@@ -109,7 +112,7 @@ public class BaseDeDatos {
      * Agrega una nueva transacción de tarjeta a la lista de transacciones.
      *
      * @param nuevaTransaccion La transacción de tarjeta que se va a agregar.
-     * 
+     *
      * @author David Gomez
      */
     public void AddTranaccionTarjeta(TransaccionTarjeta nuevaTransaccion) {
@@ -120,7 +123,7 @@ public class BaseDeDatos {
      * Agrega una nueva cuenta a la lista de cuentas.
      *
      * @param nuevaCuenta La cuenta que se va a agregar.
-     * 
+     *
      * @author David Gomez
      */
     public void addCuenta(Cuenta nuevaCuenta) throws Exception {
@@ -144,8 +147,8 @@ public class BaseDeDatos {
      *
      * @param nuevaTarjeta La tarjeta que se va a agregar.
      * @throws Exception Si ya existe una tarjeta con el mismo número en la base
-     *                   de datos.
-     * 
+     * de datos.
+     *
      * @author David Gomez
      */
     public void addTarjeta(TarjetaDeCredito nuevaTarjeta) throws Exception {
@@ -162,7 +165,7 @@ public class BaseDeDatos {
      * Agrega una nueva transferencia a la lista de transferencias.
      *
      * @param transf La transferencia que se va a agregar.
-     * 
+     *
      * @author David Gomez
      */
     public void addtransferencia(Transferencia transf) {
@@ -173,7 +176,7 @@ public class BaseDeDatos {
      * Agrega un nuevo pago de servicios a la lista de pagos de servicios.
      *
      * @param pago El pago de servicios que se va a agregar.
-     * 
+     *
      * @author David Gomez
      */
     public void addPagoServicios(PagoServicio pago) {
@@ -184,7 +187,7 @@ public class BaseDeDatos {
      * Agrega un nuevo pago de tarjeta a la lista de pagos de tarjetas.
      *
      * @param pago El pago de tarjeta que se va a agregar.
-     * 
+     *
      * @author David Gomez
      */
     public void addPagoTarjeta(PagoTarjeta pago) {
@@ -193,7 +196,7 @@ public class BaseDeDatos {
 
     /**
      * Imprime la representación JSON de los usuarios en la consola.
-     * 
+     *
      * @author David Gomez
      */
     public void printUsuarios() {
@@ -214,17 +217,17 @@ public class BaseDeDatos {
      * Crea un nuevo objeto Usuario con los atributos proporcionados, lo agrega
      * a la lista de usuarios y lo devuelve.
      *
-     * @param ci               Cédula de identidad del nuevo usuario.
-     * @param pin              PIN de acceso del nuevo usuario.
+     * @param ci Cédula de identidad del nuevo usuario.
+     * @param pin PIN de acceso del nuevo usuario.
      * @param pinTransaccional PIN para transacciones del nuevo usuario.
-     * @param email            Correo electrónico del nuevo usuario.
-     * @param nacionalidad     Nacionalidad del nuevo usuario.
-     * @param nombre           Nombre del nuevo usuario.
-     * @param apellido         Apellido del nuevo usuario.
-     * @param fechaNacimiento  Fecha de nacimiento del nuevo usuario.
-     * @param telefono         Número de teléfono del nuevo usuario.
+     * @param email Correo electrónico del nuevo usuario.
+     * @param nacionalidad Nacionalidad del nuevo usuario.
+     * @param nombre Nombre del nuevo usuario.
+     * @param apellido Apellido del nuevo usuario.
+     * @param fechaNacimiento Fecha de nacimiento del nuevo usuario.
+     * @param telefono Número de teléfono del nuevo usuario.
      * @return El nuevo usuario creado y agregado a la lista.
-     * 
+     *
      * @author David Gomez
      */
     public Usuario createUsuario(String ci, String pin, String pinTransaccional, String email, String nacionalidad,
@@ -251,10 +254,10 @@ public class BaseDeDatos {
      * transacciones y pagos almacenados en la base de datos.
      *
      * @param nroCuenta Número de cuenta para el cual se desea obtener el
-     *                  extracto.
+     * extracto.
      * @return Una lista de objetos Extracto que representan las transacciones y
-     *         pagos asociados a la cuenta.
-     * 
+     * pagos asociados a la cuenta.
+     *
      * @author David Gomez
      */
     public ArrayList<Extracto> getExtractoCuenta(String nroCuenta) {
@@ -291,12 +294,12 @@ public class BaseDeDatos {
     /**
      * Crea una nueva cuenta para un usuario con la información proporcionada.
      *
-     * @param ciUser     Cédula de identidad del usuario asociado a la cuenta.
-     * @param saldo      Saldo inicial de la cuenta.
+     * @param ciUser Cédula de identidad del usuario asociado a la cuenta.
+     * @param saldo Saldo inicial de la cuenta.
      * @param tipoCuenta Tipo de cuenta a crear.
      * @return Una instancia de la clase Cuenta recién creada o null si hay un
-     *         error durante la creación.
-     * 
+     * error durante la creación.
+     *
      * @author David Gomez
      */
     public Cuenta createCuenta(String ciUser, int saldo, String tipoCuenta) {
@@ -313,8 +316,8 @@ public class BaseDeDatos {
      * Obtiene la lista de cuentas almacenadas en la base de datos.
      *
      * @return Una lista de objetos Cuenta que representan las cuentas
-     *         almacenadas.
-     * 
+     * almacenadas.
+     *
      * @author David Gomez
      */
     public ArrayList<Cuenta> getCuentas() {
@@ -323,7 +326,7 @@ public class BaseDeDatos {
 
     /**
      * Imprime la representación JSON de las cuentas en la consola.
-     * 
+     *
      * @author David Gomez
      */
     public void printCuentas() {
@@ -340,8 +343,7 @@ public class BaseDeDatos {
         System.out.println(stringFormateado);
     }
 
-    
-    public TarjetaDeCredito createTarjetaDeCredito(String ciUser,String tipo, String pinT, String afinidad, Double lineaC){
+    public TarjetaDeCredito createTarjetaDeCredito(String ciUser, String tipo, String pinT, String afinidad, Double lineaC) {
         try {
             TarjetaDeCredito nuevaTarjeta = new TarjetaDeCredito(ciUser, tipo, pinT, afinidad, lineaC, this);
             return nuevaTarjeta;
@@ -350,11 +352,10 @@ public class BaseDeDatos {
             return null;
         }
     }
-    
-    
-        /**
+
+    /**
      * Imprime la representación JSON de las tarjetas en la consola.
-     * 
+     *
      * @author David Gomez
      */
     public void printTarjetas() {
@@ -370,9 +371,23 @@ public class BaseDeDatos {
         // Imprime la lista de representaciones JSON en la consola
         System.out.println(stringFormateado);
     }
-    
-    
-    public ArrayList<TarjetaDeCredito> getTarjetas(){
+
+    /**
+     * Returna la lista de tarjetas
+     * 
+     * @return Lista de tarjetas de credito almacenada en la base de datos
+     *
+     * @author David Gomez
+     */
+    public ArrayList<TarjetaDeCredito> getTarjetas() {
         return tarjetas;
+    }
+    
+    
+    public Servicio addServicio(String nombreServicio, String entidadEmisora){
+        Servicio nuevoServicio = new Servicio(nombreServicio, entidadEmisora);
+        
+        return nuevoServicio;
+        
     }
 }
