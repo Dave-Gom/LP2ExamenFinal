@@ -322,17 +322,17 @@ public class BaseDeDatos {
     }
 
     /**
-     * Imprime la representación JSON de las en la consola.
+     * Imprime la representación JSON de las cuentas en la consola.
      * 
      * @author David Gomez
      */
     public void printCuentas() {
-        // Lista para almacenar las representaciones JSON de los usuarios
+        // Lista para almacenar las representaciones JSON de las cuentas
         ArrayList<String> stringFormateado = new ArrayList<>();
 
         // Itera sobre la lista de cuentas
         for (Cuenta cuenta : cuentas) {
-            // Convierte cada usuario a su representación JSON y lo agrega a la lista
+            // Convierte cada cuenta a su representación JSON y lo agrega a la lista
             stringFormateado.add(cuenta.toJsonString());
         }
 
@@ -340,4 +340,39 @@ public class BaseDeDatos {
         System.out.println(stringFormateado);
     }
 
+    
+    public TarjetaDeCredito createTarjetaDeCredito(String ciUser,String tipo, String pinT, String afinidad, Double lineaC){
+        try {
+            TarjetaDeCredito nuevaTarjeta = new TarjetaDeCredito(ciUser, tipo, pinT, afinidad, lineaC, this);
+            return nuevaTarjeta;
+        } catch (Exception e) {
+            System.out.println("error al crear la Tarjeta de credito");
+            return null;
+        }
+    }
+    
+    
+        /**
+     * Imprime la representación JSON de las tarjetas en la consola.
+     * 
+     * @author David Gomez
+     */
+    public void printTarjetas() {
+        // Lista para almacenar las representaciones JSON de las tarjetas
+        ArrayList<String> stringFormateado = new ArrayList<>();
+
+        // Itera sobre la lista de cuentas
+        for (TarjetaDeCredito tarjeta : tarjetas) {
+            // Convierte cada tarjeta a su representación JSON y lo agrega a la lista
+            stringFormateado.add(tarjeta.toJsonString());
+        }
+
+        // Imprime la lista de representaciones JSON en la consola
+        System.out.println(stringFormateado);
+    }
+    
+    
+    public ArrayList<TarjetaDeCredito> getTarjetas(){
+        return tarjetas;
+    }
 }

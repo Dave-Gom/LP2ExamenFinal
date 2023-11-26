@@ -2,8 +2,9 @@ package TarjetaDeCredito;
 
 import BaseDeDatos.BaseDeDatos;
 import Cuenta.Cuenta;
-import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 /**
@@ -16,6 +17,7 @@ import java.util.GregorianCalendar;
  */
 public class TarjetaDeCredito {
 
+    private String ciUser;
     private String nroTarjeta;
     private String tipoTarjeta;
     private String pinTarjeta;
@@ -28,30 +30,38 @@ public class TarjetaDeCredito {
     public BaseDeDatos miBase;
 
     /**
-     * Constructor de la clase TarjetaDeCredito.
+     * Constructor para la creación de una nueva tarjeta de crédito.
      *
-     * @param nroT Número de la tarjeta.
-     * @param tipo Tipo de tarjeta.
-     * @param pinT PIN de la tarjeta.
-     * @param afinidad Afinidad de la tarjeta.
-     * @param lineaC Línea de crédito de la tarjeta.
+     * @param ciUser El número de cédula del usuario asociado a la tarjeta.
+     * @param tipo El tipo de tarjeta de crédito.
+     * @param pinT El PIN de la tarjeta.
+     * @param afinidad La afinidad de la tarjeta.
+     * @param lineaC La línea de crédito asignada a la tarjeta.
+     * @param base La base de datos en la que se almacenará la tarjeta.
+     * @throws Exception Si hay un error durante la creación de la tarjeta.
      *
      * @author David Gomez
      */
-    public TarjetaDeCredito(String tipo, String pinT, String afinidad, Double lineaC, BaseDeDatos base) {
+    public TarjetaDeCredito(String ciUser, String tipo, String pinT, String afinidad, Double lineaC, BaseDeDatos base) throws Exception {
+        this.ciUser = ciUser;
         this.miBase = base;
-        Integer numero = Integer.parseInt(nroTarjeta) + 1;
+        // Genera un número de tarjeta único
+        Integer numero = base.getTarjetas().size() + 1;
         this.nroTarjeta = String.format("%016d", numero);
+
         this.tipoTarjeta = tipo;
         this.pinTarjeta = pinT;
         this.afinidad = afinidad;
         this.lineaCredito = lineaC;
+        this.deudaTotal = new Double(0);
+        this.deudaAlcierre = new Double(0);
 
-        // Fecha de vencimiento: una semana después de la fecha actual
+        // Fecha de vencimiento: 1 de enero de 2024
         Calendar calendarVencimiento = new GregorianCalendar();
-        calendarVencimiento.setTime(new Date(0));
-        calendarVencimiento.add(Calendar.DATE, 7);
-        this.vencimiento = (Date) calendarVencimiento.getTime();
+        calendarVencimiento.set(2024, Calendar.JANUARY, 1);
+        this.vencimiento = calendarVencimiento.getTime();
+
+        
 
         // Fecha de cierre: primero del mes siguiente al actual
         Calendar calendarCierre = new GregorianCalendar();
@@ -60,6 +70,8 @@ public class TarjetaDeCredito {
         calendarCierre.set(Calendar.DAY_OF_MONTH, 1);
         this.fechaCierre = (Date) calendarCierre.getTime();
 
+        // Agrega la tarjeta a la base de datos
+        base.addTarjeta(this);
     }
 
     // Métodos getter para acceder a la información de la tarjeta
@@ -186,7 +198,7 @@ public class TarjetaDeCredito {
      * @param monto El monto a pagar.
      * @throws Exception Si la cuenta de origen no tiene saldo suficiente para
      * cubrir el monto del pago.
-     * 
+     *
      * @author David Gomez
      */
     public void pagarDeuda(Cuenta cuentaOrigen, double monto) throws Exception {
@@ -211,7 +223,7 @@ public class TarjetaDeCredito {
      * @param Concepto El concepto asociado al pago.
      * @throws Exception Si la suma de la deuda total y el monto supera la línea
      * de crédito de la tarjeta.
-     * 
+     *
      * @author David Gomez
      */
     public void pagar(double monto, String Concepto) throws Exception {
@@ -225,6 +237,30 @@ public class TarjetaDeCredito {
         } else {
             throw new Exception("Tarjeta Sobregirada");
         }
+    }
+
+    /**
+     * Convierte los atributos de la tarjeta de crédito a una cadena JSON.
+     *
+     * @return Una cadena JSON que representa la tarjeta de crédito.
+     *
+     * @author David Gomez
+     */
+    public String toJsonString() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+        return "{"
+                + "\"ciUser\":\"" + ciUser + "\","
+                + "\"nroTarjeta\":\"" + nroTarjeta + "\","
+                + "\"tipoTarjeta\":\"" + tipoTarjeta + "\","
+                + "\"pinTarjeta\":\"" + pinTarjeta + "\","
+                + "\"afinidad\":\"" + afinidad + "\","
+                + "\"vencimiento\":\"" + dateFormat.format(vencimiento) + "\","
+                + "\"deudaTotal\":" + deudaTotal + ","
+                + "\"deudaAlcierre\":" + deudaAlcierre + ","
+                + "\"lineaCredito\":" + lineaCredito + ","
+                + "\"fechaCierre\":\"" + dateFormat.format(fechaCierre) + "\""
+                + "}";
     }
 
 }
