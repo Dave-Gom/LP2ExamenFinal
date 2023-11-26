@@ -5,12 +5,8 @@
 
 package com.mycompany.webbankingg13;
 
-<<<<<<< HEAD
-=======
-import Interfaz.Interfaz1;
-import Usuario.Usuario;
+import Interfaz.InterfazEstatica;
 
->>>>>>> main
 /**
  *
  * @author bancocontinental05
@@ -18,14 +14,10 @@ import Usuario.Usuario;
 public class WebBankingG13 {
 
     public static void main(String[] args) {
-<<<<<<< HEAD
-        System.out.println("Hello World!");
-=======
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Interfaz1().setVisible(true);
+                new InterfazEstatica().setVisible(true);
             }
         });
->>>>>>> main
     }
 }
