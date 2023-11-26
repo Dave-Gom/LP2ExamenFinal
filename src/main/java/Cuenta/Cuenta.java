@@ -1,4 +1,8 @@
 package Cuenta;
+
+import BaseDeDatos.BaseDeDatos;
+
+
 public class Cuenta{
     private int idCuenta;
     private String titular;
@@ -45,9 +49,13 @@ public class Cuenta{
         return nroCuenta;
     }
     
+    public void guardarEnBase(BaseDeDatos miBase){
+        miBase.addCuenta(this);
+    }
     
     public void listarCuentas(){
     }
+    
     public void seleccionarCuenta(){
     }
 }
