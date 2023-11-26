@@ -1,10 +1,14 @@
 package Cuenta;
 
 import BaseDeDatos.BaseDeDatos;
+import Usuario.Usuario;
+import java.util.ArrayList;
+import Extracto.Extracto;
 
 public class Cuenta {
+
     private int idCuenta;
-    private String titular;
+    private String ciUser;
     private double saldo;
     //para saber saber si la cuenta
     //es del tipo corriente
@@ -13,12 +17,15 @@ public class Cuenta {
     private String nroCuenta;
     public BaseDeDatos base;
 
-    public Cuenta() {
-    }
+    public Cuenta(int idCuenta, String ciUser, int saldo, String tipoCuenta, String infoPersonal, String nroCuenta,/* @Author: DG */ BaseDeDatos base) throws Exception {
 
-    public Cuenta(int idCuenta, String titular, int saldo, String tipoCuenta, String infoPersonal, String nroCuenta, BaseDeDatos base) {
+        // validacion de existencia de Usuario, @author: David Gomez
+        if (base.getUserByCI(ciUser) == null) {
+            throw new Exception("Foreign key violation: El valor " + ciUser + " en la columna 'ci' no tiene una correspondencia en la tabla 'users'");
+        }
+
         this.idCuenta = idCuenta;
-        this.titular = titular;
+        this.ciUser = ciUser;
         this.tipoCuenta = tipoCuenta;
         this.saldo = saldo;
         this.infoPersonal = infoPersonal;
@@ -31,8 +38,15 @@ public class Cuenta {
         return idCuenta;
     }
 
-    public String getTitular() {
-        return titular;
+    /**
+     * Obtiene la cédula de identidad asociada a la cuenta.
+     *
+     * @return La cédula de identidad del usuario asociado a la cuenta.
+     *
+     * @author David Gomez
+     */
+    public String getCiUser() {
+        return ciUser;
     }
 
     public double getSaldo() {
@@ -52,10 +66,11 @@ public class Cuenta {
     }
 
     /**
-     * 
+     *
      * Este método retorna el saldo de la cuenta
-     * @param saldo 
-     * 
+     *
+     * @param saldo
+     *
      * @author David Gomez
      */
     public void setSaldo(double saldo) {
@@ -69,7 +84,7 @@ public class Cuenta {
      *
      * @param destino La cuenta de destino a la que se va a transferir el saldo.
      * @param monto El monto que se va a transferir.
-     * 
+     *
      * @author David Gomez
      */
     public void transferir(Cuenta destino, double monto) {
@@ -99,6 +114,30 @@ public class Cuenta {
             System.out.println(e.getMessage());
         }
     }
-    
-    
+
+    /**
+     * Obtiene el titular de la cuenta utilizando la cédula de identidad del
+     * usuario asociado.
+     *
+     * @return El objeto Usuario que actúa como titular de la cuenta.
+     *
+     * @author David Gomez
+     */
+    public Usuario getTitular() {
+        // Utiliza la cédula de identidad del usuario asociado para obtener al titular de la cuenta
+        return base.getUserByCI(ciUser);
+    }
+
+    /**
+     * Obtiene el extracto de la cuenta asociada a partir de la base de datos.
+     *
+     * @return Una lista de objetos Extracto que representan el extracto de la
+     * cuenta.
+     * 
+     * @author David Gomez
+     */
+    public ArrayList<Extracto> getExtracto() {
+        return this.base.getExtractoCuenta(this.nroCuenta);
+    }
+
 }

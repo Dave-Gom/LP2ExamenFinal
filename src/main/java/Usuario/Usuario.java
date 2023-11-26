@@ -1,6 +1,8 @@
 package Usuario;
 
+import BaseDeDatos.BaseDeDatos;
 import java.util.Date;
+import java.text.SimpleDateFormat;
 
 /**
  * La clase Usuario representa un usuario del sistema bancario.
@@ -19,6 +21,7 @@ public class Usuario {
     private String apellido; // Apellido
     private String telefono; // Número de teléfono
     private Date fechaNacimiento; // Fecha de nacimiento
+    public BaseDeDatos base;
 
     /**
      * Constructor de la clase Usuario.
@@ -32,9 +35,12 @@ public class Usuario {
      * @param apellido Apellido.
      * @param fechaNacimiento Fecha de nacimiento.
      * @param telefono Número de teléfono.
+     * @param miBase direccion de memoria de la base en la que esta almacenado el usuario
+     * 
+     * @throws Exeption si ya existe el usuario con la misma ci en la base;
      */
     public Usuario(String ci, String pin, String pinTransaccional, String email, String nacionalidad, String nombre,
-            String apellido, Date fechaNacimiento, String telefono) {
+            String apellido, Date fechaNacimiento, String telefono, BaseDeDatos miBase) throws Exception {
         this.ci = ci;
         this.apellido = apellido;
         this.email = email;
@@ -44,6 +50,8 @@ public class Usuario {
         this.pin = pin;
         this.nombre = nombre;
         this.pinTransaccional = pinTransaccional;
+        this.base = miBase;
+        miBase.addUsuario(this);
     }
 
     /**
@@ -207,4 +215,32 @@ public class Usuario {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
+    
+    
+    /**
+     * Imprime los atributos del usuario en formato JSON con la fecha formateada.
+     *
+     * @return Una cadena JSON que representa los atributos del usuario.
+     */
+    public String toJsonString() {
+        // Formatea la fecha como dd/MM/yyyy
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        String fechaNacimientoFormatted = dateFormat.format(fechaNacimiento);
+
+        // Construye la representación JSON manualmente
+        String jsonString = "{"
+                + "\"ci\":\"" + ci + "\","
+                + "\"pin\":\"" + pin + "\","
+                + "\"pinTransaccional\":\"" + pinTransaccional + "\","
+                + "\"email\":\"" + email + "\","
+                + "\"nacionalidad\":\"" + nacionalidad + "\","
+                + "\"nombre\":\"" + nombre + "\","
+                + "\"apellido\":\"" + apellido + "\","
+                + "\"telefono\":\"" + telefono + "\","
+                + "\"fechaNacimiento\":\"" + fechaNacimientoFormatted + "\""
+                + "}";
+
+        return jsonString;
+    }
+
 }

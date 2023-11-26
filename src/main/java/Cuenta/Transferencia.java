@@ -1,15 +1,17 @@
 package Cuenta;
 
+import Extracto.Extracto;
+
 /**
  * La clase Transferencia representa una transferencia de fondos entre dos
- * cuentas bancarias.
- * Contiene información sobre las cuentas de origen y destino, los bancos de
- * origen y destino, y el monto transferido.
- * Esta clase se utiliza para registrar transferencias en la base de datos.
- * 
+ * cuentas bancarias. Contiene información sobre las cuentas de origen y
+ * destino, los bancos de origen y destino, y el monto transferido. Esta clase
+ * se utiliza para registrar transferencias en la base de datos.
+ *
  * @author bancocontinental05
  */
-public class Transferencia {
+public class Transferencia implements Extracto {
+
     private String cuentaOrigen;
     private String cuentaDestino;
     private String bancoOrigen;
@@ -19,10 +21,10 @@ public class Transferencia {
     /**
      * Constructor de la clase Transferencia.
      *
-     * @param origen  La cuenta de origen de la transferencia.
+     * @param origen La cuenta de origen de la transferencia.
      * @param destino La cuenta de destino de la transferencia.
-     * @param monto   El monto transferido.
-     * @param bDest   El banco de destino de la transferencia.
+     * @param monto El monto transferido.
+     * @param bDest El banco de destino de la transferencia.
      * @param bOrigin El banco de origen de la transferencia.
      */
     public Transferencia(Cuenta origen, Cuenta destino, double monto, String bDest, String bOrigin) {
@@ -77,4 +79,43 @@ public class Transferencia {
     public double getMonto() {
         return monto;
     }
+
+    /**
+     * Genera una representación en formato JSON de los atributos de la clase.
+     *
+     * @return Una cadena que representa los atributos en formato JSON.
+     */
+    public String toJsonString() {
+        // Construye manualmente la representación JSON
+        String jsonString = "{"
+                + "\"cuentaOrigen\":\"" + cuentaOrigen + "\","
+                + "\"cuentaDestino\":\"" + cuentaDestino + "\","
+                + "\"bancoOrigen\":\"" + bancoOrigen + "\","
+                + "\"bancoDestino\":\"" + bancoDestino + "\","
+                + "\"monto\":" + monto
+                + "}";
+
+        return jsonString;
+    }
+
+    /**
+     * Imprime la representación en formato JSON de los atributos en la consola.
+     */
+    @Override
+    public void imprimir() {
+        System.out.println(toJsonString());
+    }
+
+    /**
+     * Devuelve una instancia de la clase actual que implementa la interfaz
+     * Visualizable.
+     *
+     * @return Una instancia de la clase actual que implementa la interfaz
+     * Visualizable.
+     */
+    @Override
+    public Extracto getInstance() {
+        return this;
+    }
+
 }

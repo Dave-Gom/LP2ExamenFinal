@@ -1,7 +1,9 @@
 package TarjetaDeCredito;
 
-
+import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import Extracto.Extracto;
 
 /**
  * La clase PagoTarjeta representa el pago de la tarjeta. Contiene información
@@ -10,7 +12,7 @@ import java.util.Date;
  *
  * @author David Gomez
  */
-public class PagoTarjeta {
+public class PagoTarjeta implements Extracto {
 
     private String CuentaOrigen;
     private String nroTarjeta;
@@ -20,9 +22,9 @@ public class PagoTarjeta {
     /**
      * Constructor de la clase PagoTarjeta.
      *
-     * @param cuenta La cuenta de origen del pago de tarjeta.
+     * @param cuenta        La cuenta de origen del pago de tarjeta.
      * @param numeroTarjeta El número de la tarjeta utilizada en el pago.
-     * @param monto El monto del pago de tarjeta.
+     * @param monto         El monto del pago de tarjeta.
      */
     public PagoTarjeta(String cuenta, String numeroTarjeta, double monto) {
         this.CuentaOrigen = cuenta;
@@ -66,4 +68,47 @@ public class PagoTarjeta {
     public Date getCreatedAt() {
         return createdAt;
     }
+
+    /**
+     * Genera una representación en formato JSON de los atributos de la clase.
+     *
+     * @return Una cadena que representa los atributos en formato JSON.
+     */
+    public String toJsonString() {
+        // Formatea la fecha como "yyyy-MM-dd HH:mm:ss" (puedes ajustar el formato según
+        // tus preferencias)
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String fechaFormateada = dateFormat.format(createdAt);
+
+        // Construye manualmente la representación JSON
+        String jsonString = "{"
+                + "\"CuentaOrigen\":\"" + CuentaOrigen + "\","
+                + "\"nroTarjeta\":\"" + nroTarjeta + "\","
+                + "\"monto\":" + monto + ","
+                + "\"createdAt\":\"" + fechaFormateada + "\""
+                + "}";
+
+        return jsonString;
+    }
+
+    /**
+     * Imprime la representación en formato JSON de los atributos en la consola.
+     */
+    @Override
+    public void imprimir() {
+        System.out.println(toJsonString());
+    }
+
+    /**
+     * Devuelve una instancia de la clase actual que implementa la interfaz
+     * Visualizable.
+     *
+     * @return Una instancia de la clase actual que implementa la interfaz
+     *         Visualizable.
+     */
+    @Override
+    public Extracto getInstance() {
+        return this;
+    }
+
 }

@@ -16,7 +16,7 @@ public class InterfazCuenta extends javax.swing.JPanel {
         initComponents();
 //        CuentaAct = new Cuenta(42433,"Alan Fabricio Nuñez",10000000,"Corriente","44876878","12345");
         jLabel3.setText(CuentaAct.getTipoCuenta()+":");
-        jLabel4.setText(CuentaAct.getTitular());
+        jLabel4.setText(CuentaAct.getCiUser());
         String Saldo = CuentaAct.getSaldo() + "";
         jLabel6.setText("$" + Saldo + "   Gs");
     }

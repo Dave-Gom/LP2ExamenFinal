@@ -9,6 +9,8 @@ import TarjetaDeCredito.TransaccionTarjeta;
 import TarjetaDeCredito.PagoTarjeta;
 
 import Cuenta.Transferencia;
+import java.util.Date;
+import Extracto.Extracto;
 
 
 /**
@@ -48,8 +50,14 @@ public class BaseDeDatos {
      *
      * @param nuevoUser El usuario que se va a agregar.
      */
-    public void addUsuario(Usuario nuevoUser) {
-        this.usuarios.add(nuevoUser);
+    public void addUsuario(Usuario nuevoUser) throws Exception {
+        for (Usuario usuario : usuarios) {
+            if(usuario.getCi().compareTo(nuevoUser.getCi()) == 0){
+                throw new Exception("Duplicate entry 'ci' for key 'ci_UNIQUE'");
+            }
+        }
+        
+        usuarios.add(nuevoUser);
     }
 
     /**
@@ -100,9 +108,22 @@ public class BaseDeDatos {
      *
      * @param nuevaCuenta La cuenta que se va a agregar.
      */
-    public void addCuenta(Cuenta nuevaCuenta) {
+    public void addCuenta(Cuenta nuevaCuenta) throws Exception {
+        if(getCuentaByNro(nuevaCuenta.getNroCuenta()) != null){
+            throw new Exception("Duplicate entry 'nroCuenta' for key 'cuentas.nroCuenta_UNIQUE");
+        }
         cuentas.add(nuevaCuenta);
     }
+    
+    public Cuenta getCuentaByNro(String numeroDeCuenta){
+        for (Cuenta cuenta : cuentas) {
+            if(cuenta.getNroCuenta().compareTo(numeroDeCuenta) == 0){
+            return cuenta;
+                    }
+        }
+        return null;
+    }
+        
 
     /**
      * Agrega una nueva tarjeta a la lista de tarjetas.
@@ -145,4 +166,83 @@ public class BaseDeDatos {
     public void addPagoTarjeta(PagoTarjeta pago) {
         pagosTarjetas.add(pago);
     }
+    
+    
+    /**
+     * Imprime la representación JSON de los usuarios en la consola.
+     */
+    public void printUsuarios() {
+        // Lista para almacenar las representaciones JSON de los usuarios
+        ArrayList<String> stringFormateado = new ArrayList<>();
+
+        // Itera sobre la lista de usuarios
+        for (Usuario usuario : usuarios) {
+            // Convierte cada usuario a su representación JSON y lo agrega a la lista
+            stringFormateado.add(usuario.toJsonString());
+        }
+
+        // Imprime la lista de representaciones JSON en la consola
+        System.out.println(stringFormateado);
+    }
+    
+    
+    /**
+     * Crea un nuevo objeto Usuario con los atributos proporcionados, lo agrega
+     * a la lista de usuarios y lo devuelve.
+     *
+     * @param ci Cédula de identidad del nuevo usuario.
+     * @param pin PIN de acceso del nuevo usuario.
+     * @param pinTransaccional PIN para transacciones del nuevo usuario.
+     * @param email Correo electrónico del nuevo usuario.
+     * @param nacionalidad Nacionalidad del nuevo usuario.
+     * @param nombre Nombre del nuevo usuario.
+     * @param apellido Apellido del nuevo usuario.
+     * @param fechaNacimiento Fecha de nacimiento del nuevo usuario.
+     * @param telefono Número de teléfono del nuevo usuario.
+     * @return El nuevo usuario creado y agregado a la lista.
+     */
+    public Usuario createUsuario(String ci, String pin, String pinTransaccional, String email, String nacionalidad, String nombre,
+            String apellido, Date fechaNacimiento, String telefono) {
+        try {
+            // Crea un nuevo usuario con los atributos proporcionados
+            Usuario nuevoUser = new Usuario(ci, pin, pinTransaccional, email, nacionalidad, nombre, apellido, fechaNacimiento, telefono, this);
+
+            // Agrega el nuevo usuario a la lista de usuarios
+            usuarios.add(nuevoUser);
+
+            // Devuelve el nuevo usuario creado
+            return nuevoUser;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    
+    
+    public ArrayList<Extracto> getExtractoCuenta(String nroCuenta){
+        ArrayList<Extracto> datos = new ArrayList<>();
+        
+        for (Transferencia Transf : transferencias) {
+            if(Transf.getCuentaOrigen().compareTo(nroCuenta) == 0 || Transf.getBancoDestino().compareTo(nroCuenta) == 0){
+                datos.add(Transf);
+            }
+        }
+        
+        for (PagoServicio pagoServicio : pagosServ) {
+            if(pagoServicio.getCuentaNro().compareTo(nroCuenta) == 0){
+                datos.add(pagoServicio);
+            }
+        }
+        
+        for (PagoTarjeta pagosTarjeta : pagosTarjetas) {
+            if(pagosTarjeta.getCuentaOrigen().compareTo(nroCuenta) == 0){
+                datos.add(pagosTarjeta);
+            }
+        }
+        
+        
+        
+        return datos;
+    }
+
 }
