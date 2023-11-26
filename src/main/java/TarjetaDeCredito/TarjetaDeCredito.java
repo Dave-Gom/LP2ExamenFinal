@@ -38,9 +38,10 @@ public class TarjetaDeCredito {
      *
      * @author David Gomez
      */
-    public TarjetaDeCredito(String nroT, String tipo, String pinT, String afinidad, Double lineaC, BaseDeDatos base) {
+    public TarjetaDeCredito(String tipo, String pinT, String afinidad, Double lineaC, BaseDeDatos base) {
         this.miBase = base;
-        this.nroTarjeta = nroT;
+        Integer numero = Integer.parseInt(nroTarjeta) + 1;
+        this.nroTarjeta = String.format("%016d", numero);
         this.tipoTarjeta = tipo;
         this.pinTarjeta = pinT;
         this.afinidad = afinidad;

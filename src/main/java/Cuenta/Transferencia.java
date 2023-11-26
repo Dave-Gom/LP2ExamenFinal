@@ -26,6 +26,8 @@ public class Transferencia implements Extracto {
      * @param monto El monto transferido.
      * @param bDest El banco de destino de la transferencia.
      * @param bOrigin El banco de origen de la transferencia.
+     * 
+     * @author David Gomez
      */
     public Transferencia(Cuenta origen, Cuenta destino, double monto, String bDest, String bOrigin) {
         cuentaOrigen = origen.getNroCuenta();
@@ -39,6 +41,8 @@ public class Transferencia implements Extracto {
      * Obtiene la cuenta de origen de la transferencia.
      *
      * @return La cuenta de origen de la transferencia.
+     * 
+     * @author David Gomez
      */
     public String getCuentaOrigen() {
         return cuentaOrigen;
@@ -48,6 +52,9 @@ public class Transferencia implements Extracto {
      * Obtiene la cuenta de destino de la transferencia.
      *
      * @return La cuenta de destino de la transferencia.
+     * 
+     * 
+     * @author David Gomez
      */
     public String getCuentaDestino() {
         return cuentaDestino;
@@ -57,6 +64,8 @@ public class Transferencia implements Extracto {
      * Obtiene el banco de origen de la transferencia.
      *
      * @return El banco de origen de la transferencia.
+     * 
+     * @author David Gomez
      */
     public String getBancoOrigen() {
         return bancoOrigen;
@@ -66,6 +75,8 @@ public class Transferencia implements Extracto {
      * Obtiene el banco de destino de la transferencia.
      *
      * @return El banco de destino de la transferencia.
+     * 
+     * @author David Gomez
      */
     public String getBancoDestino() {
         return bancoDestino;
@@ -75,6 +86,8 @@ public class Transferencia implements Extracto {
      * Obtiene el monto transferido en la transferencia.
      *
      * @return El monto transferido.
+     * 
+     * @author David Gomez
      */
     public double getMonto() {
         return monto;
@@ -84,6 +97,9 @@ public class Transferencia implements Extracto {
      * Genera una representación en formato JSON de los atributos de la clase.
      *
      * @return Una cadena que representa los atributos en formato JSON.
+     * 
+     * 
+     * @author David Gomez
      */
     public String toJsonString() {
         // Construye manualmente la representación JSON
@@ -100,6 +116,8 @@ public class Transferencia implements Extracto {
 
     /**
      * Imprime la representación en formato JSON de los atributos en la consola.
+     * 
+     * @author David Gomez
      */
     @Override
     public void imprimir() {
@@ -112,6 +130,8 @@ public class Transferencia implements Extracto {
      *
      * @return Una instancia de la clase actual que implementa la interfaz
      * Visualizable.
+     * 
+     * @author David Gomez
      */
     @Override
     public Extracto getInstance() {
