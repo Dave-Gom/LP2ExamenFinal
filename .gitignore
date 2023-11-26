@@ -6,3 +6,4 @@
 .netbeams*
 
 /target
+/nbproject/

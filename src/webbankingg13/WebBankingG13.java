@@ -28,6 +28,8 @@ public class WebBankingG13 {
 
         TarjetaDeCredito miTarjeta = mainDB.createTarjetaDeCredito(user1.getCi(), "Oro", "a.123456", "Mastercard", new Double(5000000));
 
+        
+        
         mainDB.printCuentas();
         mainDB.printTarjetas();
 
