@@ -92,7 +92,7 @@ public class BaseDeDatos {
      *
      * @param cedula El número de cédula de identidad del usuario.
      * @return El usuario con la cédula proporcionada, o null si no se
-     * encuentra.
+     *         encuentra.
      * 
      * @author David Gomez
      */
@@ -144,7 +144,7 @@ public class BaseDeDatos {
      *
      * @param nuevaTarjeta La tarjeta que se va a agregar.
      * @throws Exception Si ya existe una tarjeta con el mismo número en la base
-     * de datos.
+     *                   de datos.
      * 
      * @author David Gomez
      */
@@ -214,15 +214,15 @@ public class BaseDeDatos {
      * Crea un nuevo objeto Usuario con los atributos proporcionados, lo agrega
      * a la lista de usuarios y lo devuelve.
      *
-     * @param ci Cédula de identidad del nuevo usuario.
-     * @param pin PIN de acceso del nuevo usuario.
+     * @param ci               Cédula de identidad del nuevo usuario.
+     * @param pin              PIN de acceso del nuevo usuario.
      * @param pinTransaccional PIN para transacciones del nuevo usuario.
-     * @param email Correo electrónico del nuevo usuario.
-     * @param nacionalidad Nacionalidad del nuevo usuario.
-     * @param nombre Nombre del nuevo usuario.
-     * @param apellido Apellido del nuevo usuario.
-     * @param fechaNacimiento Fecha de nacimiento del nuevo usuario.
-     * @param telefono Número de teléfono del nuevo usuario.
+     * @param email            Correo electrónico del nuevo usuario.
+     * @param nacionalidad     Nacionalidad del nuevo usuario.
+     * @param nombre           Nombre del nuevo usuario.
+     * @param apellido         Apellido del nuevo usuario.
+     * @param fechaNacimiento  Fecha de nacimiento del nuevo usuario.
+     * @param telefono         Número de teléfono del nuevo usuario.
      * @return El nuevo usuario creado y agregado a la lista.
      * 
      * @author David Gomez
@@ -251,16 +251,17 @@ public class BaseDeDatos {
      * transacciones y pagos almacenados en la base de datos.
      *
      * @param nroCuenta Número de cuenta para el cual se desea obtener el
-     * extracto.
+     *                  extracto.
      * @return Una lista de objetos Extracto que representan las transacciones y
-     * pagos asociados a la cuenta.
+     *         pagos asociados a la cuenta.
      * 
      * @author David Gomez
      */
     public ArrayList<Extracto> getExtractoCuenta(String nroCuenta) {
         ArrayList<Extracto> datos = new ArrayList<>();
 
-        // Recorre las transferencias y agrega las que corresponden a la cuenta especificada al extracto
+        // Recorre las transferencias y agrega las que corresponden a la cuenta
+        // especificada al extracto
         for (Transferencia transf : transferencias) {
             if (transf.getCuentaOrigen().compareTo(nroCuenta) == 0
                     || transf.getBancoDestino().compareTo(nroCuenta) == 0) {
@@ -268,14 +269,16 @@ public class BaseDeDatos {
             }
         }
 
-        // Recorre los pagos de servicio y agrega los que corresponden a la cuenta especificada al extracto
+        // Recorre los pagos de servicio y agrega los que corresponden a la cuenta
+        // especificada al extracto
         for (PagoServicio pagoServicio : pagosServ) {
             if (pagoServicio.getCuentaNro().compareTo(nroCuenta) == 0) {
                 datos.add(pagoServicio);
             }
         }
 
-        // Recorre los pagos de tarjeta y agrega los que corresponden a la cuenta especificada al extracto
+        // Recorre los pagos de tarjeta y agrega los que corresponden a la cuenta
+        // especificada al extracto
         for (PagoTarjeta pagoTarjeta : pagosTarjetas) {
             if (pagoTarjeta.getCuentaOrigen().compareTo(nroCuenta) == 0) {
                 datos.add(pagoTarjeta);
@@ -288,11 +291,11 @@ public class BaseDeDatos {
     /**
      * Crea una nueva cuenta para un usuario con la información proporcionada.
      *
-     * @param ciUser Cédula de identidad del usuario asociado a la cuenta.
-     * @param saldo Saldo inicial de la cuenta.
+     * @param ciUser     Cédula de identidad del usuario asociado a la cuenta.
+     * @param saldo      Saldo inicial de la cuenta.
      * @param tipoCuenta Tipo de cuenta a crear.
      * @return Una instancia de la clase Cuenta recién creada o null si hay un
-     * error durante la creación.
+     *         error durante la creación.
      * 
      * @author David Gomez
      */
@@ -310,15 +313,14 @@ public class BaseDeDatos {
      * Obtiene la lista de cuentas almacenadas en la base de datos.
      *
      * @return Una lista de objetos Cuenta que representan las cuentas
-     * almacenadas.
+     *         almacenadas.
      * 
      * @author David Gomez
      */
     public ArrayList<Cuenta> getCuentas() {
         return this.cuentas;
     }
-    
-    
+
     /**
      * Imprime la representación JSON de las en la consola.
      * 
