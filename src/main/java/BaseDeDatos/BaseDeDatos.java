@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import main.java.Usuario.Usuario;
 
-class BaseDeDatos {
+public class BaseDeDatos {
     private ArrayList<Usuario> usuarios;
 
     public BaseDeDatos() {

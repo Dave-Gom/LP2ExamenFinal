@@ -28,27 +28,12 @@ public class InterfazTarjetas extends javax.swing.JPanel {
         setBackground(new java.awt.Color(204, 204, 255));
         setForeground(new java.awt.Color(255, 204, 204));
         setPreferredSize(new java.awt.Dimension(495, 280));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Las Tarjetas son:");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(222, 222, 222)
-                .addComponent(jLabel1)
-                .addContainerGap(260, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(jLabel1)
-                .addContainerGap(309, Short.MAX_VALUE))
-        );
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 53, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
