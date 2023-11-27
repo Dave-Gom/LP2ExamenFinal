@@ -1,6 +1,6 @@
-package main.java.Interfaz;
-import main.java.BaseDeDatos.BaseDeDatos;
-import main.java.Usuario.Usuario;
+package Interfaz;
+import BaseDeDatos.BaseDeDatos;
+import Usuario.Usuario;
 /**
  *
  * @author 1
