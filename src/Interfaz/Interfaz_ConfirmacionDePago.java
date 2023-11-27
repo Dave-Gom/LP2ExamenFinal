@@ -4,12 +4,13 @@
  */
 package Interfaz;
 
+import Cuenta.*;
 import Servicio.Servicio;
 import Usuario.Usuario;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import javax.swing.JOptionPane;
-
+import Servicio.*;
 /**
  *
  * @author USER-PC
@@ -44,11 +45,11 @@ public class Interfaz_ConfirmacionDePago extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextPane2 = new javax.swing.JTextPane();
-        jPasswordField1 = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
 
         setBackground(new java.awt.Color(255, 51, 51));
 
@@ -73,15 +74,26 @@ public class Interfaz_ConfirmacionDePago extends javax.swing.JPanel {
         jTextPane2.setBackground(new java.awt.Color(0, 0, 0));
         jScrollPane2.setViewportView(jTextPane2);
 
-        jPasswordField1.setForeground(new java.awt.Color(153, 153, 153));
-        jPasswordField1.setText("jPasswordField1");
-
         jButton1.setBackground(new java.awt.Color(0, 0, 153));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Realiza pago");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        jPasswordField1.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jPasswordField1.setForeground(new java.awt.Color(153, 153, 153));
+        jPasswordField1.setText("jPasswordField1");
+        jPasswordField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPasswordField1FocusGained(evt);
+            }
+        });
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField1ActionPerformed(evt);
             }
         });
 
@@ -105,8 +117,8 @@ public class Interfaz_ConfirmacionDePago extends javax.swing.JPanel {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(46, 46, 46)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
                                     .addComponent(jPasswordField1)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
                                     .addComponent(jLabel3))))
                         .addGap(18, 18, 18)))
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -162,21 +174,38 @@ public class Interfaz_ConfirmacionDePago extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        int Saldo = 1000;
-        int pago = 100;
-        if(Saldo < pago)
+        Cuenta  cuentaUser = user.base.getCuentas().get(0);
+        double Saldo = cuentaUser.getSaldo();
+        System.out.println("Saldo:" +Saldo +" "+user.getPinTransaccional());
+        double Pago = principal.consultar();
+        if(Saldo < Pago)
             JOptionPane.showMessageDialog(null,"El saldo es Insuficiente para realizar el pago");
-        else
-            JOptionPane.showMessageDialog(null,"El pago se realizo correctamente.");
-        
-        //new InterfazPagos().setVisible(true);;
-        InterfazPagos inter = new InterfazPagos(user);
-        jPanel1.removeAll();
-        jPanel1.add(inter,BorderLayout.CENTER);
+        else{
+            //String Pass = jTextField1.getText();
+            
+            //System.out.println("jTextField1.getText()" + Pass);
+            char[] arrayC = jPasswordField1.getPassword();
+            String pass = new String(arrayC);
+            //jPasswordField1
+            if(pass.equals(user.getPinTransaccional())){
+                JOptionPane.showMessageDialog(null,"El pago se realizo correctamente.");
+                user.base.addPagoServicios(new PagoServicio(principal.getNombre(),Pago,cuentaUser.getNroCuenta()));
+            }else{
+                JOptionPane.showMessageDialog(null,"El pin Transaccional es incorrecto.");
+            }
+        }
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
-    
+
+    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField1ActionPerformed
+
+    private void jPasswordField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField1FocusGained
+        jPasswordField1.setText("");
+    }//GEN-LAST:event_jPasswordField1FocusGained
+                                                                   
     private void showPanel(JPanel jp){
         jp.setSize(620,500);
         jp.setLocation(0,0);
@@ -186,7 +215,7 @@ public class Interfaz_ConfirmacionDePago extends javax.swing.JPanel {
         jPanel1.repaint();
     }
     public void resumenDePago(){
-        jLabel5.setText("Monto: $ " + principal.consultar()+ "GS");
+        jLabel5.setText("Monto: $ " + principal.consultar() + "GS");
         jLabel6.setText("Servicio: "+  principal.getNombre());
         jLabel6.setText("Cuenta: "+  user.getApellido() + "/" + user.getCi());
     }
