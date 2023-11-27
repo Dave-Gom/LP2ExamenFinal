@@ -177,6 +177,7 @@ public class InterfazTransferencias extends javax.swing.JPanel {
         bancoOrigen = jTextField4.getText();
         bancoDestino = jTextField5.getText();
         Transferencia transferencia = new Transferencia(cuentaOrigen, cuentaDestino, monto, bancoDestino, bancoOrigen);
+        cuentaOrigen.transferir(cuentaDestino, monto);
         System.out.println(transferencia.getCuentaOrigen() + " ha transferido el total de " + transferencia.getMonto() + " Gs a la cuenta " + transferencia.getCuentaDestino());
         JOptionPane.showMessageDialog(null,"La cuenta " + transferencia.getCuentaOrigen() + " ha transferido el total de " + transferencia.getMonto() + " Gs a la cuenta " + transferencia.getCuentaDestino());
     }//GEN-LAST:event_jButton1MouseClicked
