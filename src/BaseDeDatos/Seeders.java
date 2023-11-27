@@ -174,7 +174,7 @@ public class Seeders {
         for (TarjetaDeCredito tarjetaDeCredito : misTC) {
             for (int i = 0; i < 5; i++) {
                 try {
-                    tarjetaDeCredito.pagar(Math.random() * 1000, "Transaccion generada automaticamente");
+                    tarjetaDeCredito.pagar(Math.random() * 10000000, "Transaccion generada automaticamente");
                 } catch (Exception e) {
                     System.out.println(e.getMessage() + tarjetaDeCredito.getTitular().getNombre());
                 }
