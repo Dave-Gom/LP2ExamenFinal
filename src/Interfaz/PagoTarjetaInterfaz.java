@@ -55,12 +55,13 @@ public class PagoTarjetaInterfaz extends javax.swing.JPanel {
         jTextField1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jTextField2 = new javax.swing.JTextField();
 
         jLabel1.setText("Deuda al Cierre:");
 
         jLabel2.setText("jLabel2");
 
-        jTextField1.setText("jTextField1");
+        jTextField1.setText("Monto");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -73,6 +74,13 @@ public class PagoTarjetaInterfaz extends javax.swing.JPanel {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        jTextField2.setText("Pin transaccional");
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
             }
         });
 
@@ -95,7 +103,10 @@ public class PagoTarjetaInterfaz extends javax.swing.JPanel {
                                 .addComponent(jLabel2))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(152, 152, 152)
-                        .addComponent(jButton1)))
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(144, 144, 144)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(128, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -109,7 +120,9 @@ public class PagoTarjetaInterfaz extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addGap(55, 55, 55)
+                .addGap(22, 22, 22)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addContainerGap(82, Short.MAX_VALUE))
         );
@@ -122,22 +135,36 @@ public class PagoTarjetaInterfaz extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
 
-
-        if (jTextField1.getText()!= null && jTextField1.getText().length()>0) {
+        if ((jTextField1.getText() != null && jTextField1.getText().length() > 0) || (jTextField2.getText() != null && jTextField2.getText().length() > 0)) {
             try {
-                this.miTarjeta.pagarDeuda(titular.getCuentas().get(0), new Double(jTextField1.getText()));
-                InterfazTarjetas tarje = new InterfazTarjetas(miTarjeta, contenidoDinamico);
-                showPanel(tarje);
-                this.setVisible(false);
+                if (jTextField1.getText().compareTo(miTarjeta.getTitular().getPinTransaccional()) == 0) {
+                    this.miTarjeta.pagarDeuda(titular.getCuentas().get(0), new Double(jTextField1.getText()));
+                    InterfazTarjetas tarje = new InterfazTarjetas(miTarjeta, contenidoDinamico);
+                    showPanel(tarje);
+                    this.setVisible(false);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Pin Incorrecto");
+                }
 
             } catch (Exception e) {
                 System.out.println(e.getMessage());
                 JOptionPane.showMessageDialog(this, "Algo Salio mal: " + e.getMessage());
             }
         } else {
-            System.out.println("Error");
+
+            if ((jTextField1.getText() == null || jTextField1.getText().length() == 0)) {
+                JOptionPane.showMessageDialog(this, "El monto a pagar el requerido");
+            } else {
+                JOptionPane.showMessageDialog(this, "Para continuar complete la contraseña transaccionale");
+
+            }
+
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -146,5 +173,6 @@ public class PagoTarjetaInterfaz extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
