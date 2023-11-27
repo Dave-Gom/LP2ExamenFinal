@@ -6,3 +6,5 @@
 .netbeams*
 
 /target
+/nbproject/
+/dist/
