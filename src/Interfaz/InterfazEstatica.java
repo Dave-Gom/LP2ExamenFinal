@@ -24,7 +24,7 @@ public class InterfazEstatica extends javax.swing.JFrame {
     public InterfazEstatica(Usuario user) {
         initComponents();
         this.user = user;
-        InterfazHome h1 = new InterfazHome();
+        InterfazHome h1 = new InterfazHome(user);
         JButton [] botones = {Ayuda,Cuenta,Home,Pagos,Tarjetas,Transferencias};
         for (JButton boton : botones){
             boton.setBackground(new Color(0,0,0));
@@ -268,7 +268,7 @@ public class InterfazEstatica extends javax.swing.JFrame {
     }//GEN-LAST:event_TransferenciasActionPerformed
 
     private void HomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeActionPerformed
-        InterfazHome h1 = new InterfazHome();
+        InterfazHome h1 = new InterfazHome(user);
         showPanel(h1);
     }//GEN-LAST:event_HomeActionPerformed
 
