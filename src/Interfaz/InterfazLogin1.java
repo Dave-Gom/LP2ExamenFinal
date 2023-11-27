@@ -222,9 +222,9 @@ public class InterfazLogin1 extends javax.swing.JFrame {
         // ni muy largo, debido a que puede generar
         // un desbordamiento
         if (jTextField1.getText() != null && jTextField1.getText().length() < 10) {
-            //Cuenta cuenta = B1.getCuentaByNro(jTextField1.getText());
-            //Usuario user = cuenta.getTitular();
-            Usuario user = B1.getUserByCI(jTextField1.getText());
+            Cuenta cuenta = B1.getCuentaByNro(jTextField1.getText());
+            Usuario user = cuenta.getTitular();
+            //Usuario user = B1.getUserByCI(jTextField1.getText());
             if (user != null && validarPin(user, jTextField2.getText())) {
                 this.setVisible(false);
                 InterfazEstatica p1 = new InterfazEstatica(user);

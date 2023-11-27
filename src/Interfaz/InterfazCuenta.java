@@ -18,7 +18,9 @@ public class InterfazCuenta extends javax.swing.JPanel {
         Cuenta CuentaAct = new Cuenta();
         for (Cuenta cuenta : user.base.getCuentas()){
             CuentaAct = cuenta;
-            break;
+            if(CuentaAct.getCiUser() == user.getCi()){
+                break;
+            }
         }
         jLabel3.setText(CuentaAct.getTipoCuenta());
         jLabel4.setText(CuentaAct.getCiUser());
