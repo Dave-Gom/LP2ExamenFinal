@@ -42,6 +42,8 @@ public class Usuario {
      *                         almacenado el usuario
      * 
      * @throws Exeption si ya existe el usuario con la misma ci en la base;
+     * 
+     * @author David Gomez
      */
     public Usuario(String ci, String pin, String pinTransaccional, String email, String nacionalidad, String nombre,
             String apellido, Date fechaNacimiento, String telefono, BaseDeDatos miBase) throws Exception {
@@ -62,6 +64,8 @@ public class Usuario {
      * Obtiene el apellido del usuario.
      *
      * @return El apellido del usuario.
+     * 
+     * @author David Gomez
      */
     public String getApellido() {
         return apellido;
@@ -71,6 +75,8 @@ public class Usuario {
      * Obtiene la cédula de identidad del usuario.
      *
      * @return La cédula de identidad del usuario.
+     * 
+     * @author David Gomez
      */
     public String getCi() {
         return ci;
@@ -80,6 +86,8 @@ public class Usuario {
      * Obtiene el correo electrónico del usuario.
      *
      * @return El correo electrónico del usuario.
+     * 
+     * @author David Gomez
      */
     public String getEmail() {
         return email;
@@ -89,6 +97,8 @@ public class Usuario {
      * Obtiene la fecha de nacimiento del usuario.
      *
      * @return La fecha de nacimiento del usuario.
+     * 
+     * @author David Gomez
      */
     public Date getFechaNacimiento() {
         return fechaNacimiento;
@@ -98,6 +108,8 @@ public class Usuario {
      * Obtiene la nacionalidad del usuario.
      *
      * @return La nacionalidad del usuario.
+     * 
+     * @author David Gomez
      */
     public String getNacionalidad() {
         return nacionalidad;
@@ -107,6 +119,8 @@ public class Usuario {
      * Obtiene el nombre del usuario.
      *
      * @return El nombre del usuario.
+     * 
+     * @author David Gomez
      */
     public String getNombre() {
         return nombre;
@@ -116,6 +130,8 @@ public class Usuario {
      * Obtiene el PIN de acceso del usuario.
      *
      * @return El PIN de acceso del usuario.
+     * 
+     * @author David Gomez
      */
     public String getPin() {
         return pin;
@@ -125,6 +141,8 @@ public class Usuario {
      * Obtiene el PIN transaccional del usuario.
      *
      * @return El PIN transaccional del usuario.
+     * 
+     * @author David Gomez
      */
     public String getPinTransaccional() {
         return pinTransaccional;
@@ -134,6 +152,8 @@ public class Usuario {
      * Obtiene el número de teléfono del usuario.
      *
      * @return El número de teléfono del usuario.
+     * 
+     * @author David Gomez
      */
     public String getTelefono() {
         return telefono;
@@ -143,6 +163,8 @@ public class Usuario {
      * Establece el apellido del usuario.
      *
      * @param apellido El nuevo apellido del usuario.
+     * 
+     * @author David Gomez
      */
     public void setApellido(String apellido) {
         this.apellido = apellido;
@@ -152,6 +174,8 @@ public class Usuario {
      * Establece la cédula de identidad del usuario.
      *
      * @param ci La nueva cédula de identidad del usuario.
+     * 
+     * @author David Gomez
      */
     public void setCi(String ci) {
         this.ci = ci;
@@ -161,6 +185,8 @@ public class Usuario {
      * Establece el correo electrónico del usuario.
      *
      * @param email El nuevo correo electrónico del usuario.
+     * 
+     * @author David Gomez
      */
     public void setEmail(String email) {
         this.email = email;
@@ -170,6 +196,8 @@ public class Usuario {
      * Establece la fecha de nacimiento del usuario.
      *
      * @param fechaNacimiento La nueva fecha de nacimiento del usuario.
+     * 
+     * @author David Gomez
      */
     public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
@@ -179,6 +207,8 @@ public class Usuario {
      * Establece la nacionalidad del usuario.
      *
      * @param nacionalidad La nueva nacionalidad del usuario.
+     * 
+     * @author David Gomez
      */
     public void setNacionalidad(String nacionalidad) {
         this.nacionalidad = nacionalidad;
@@ -188,6 +218,8 @@ public class Usuario {
      * Establece el nombre del usuario.
      *
      * @param nombre El nuevo nombre del usuario.
+     * 
+     * @author David Gomez
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -197,6 +229,8 @@ public class Usuario {
      * Establece el PIN de acceso del usuario.
      *
      * @param pin El nuevo PIN de acceso del usuario.
+     * 
+     * @author David Gomez
      */
     public void setPin(String pin) {
         this.pin = pin;
@@ -206,6 +240,8 @@ public class Usuario {
      * Establece el PIN transaccional del usuario.
      *
      * @param pinTransaccional El nuevo PIN transaccional del usuario.
+     * 
+     * @author David Gomez
      */
     public void setPinTransaccional(String pinTransaccional) {
         this.pinTransaccional = pinTransaccional;
@@ -215,6 +251,8 @@ public class Usuario {
      * Establece el número de teléfono del usuario.
      *
      * @param telefono El nuevo número de teléfono del usuario.
+     * 
+     * @author David Gomez
      */
     public void setTelefono(String telefono) {
         this.telefono = telefono;
@@ -224,6 +262,8 @@ public class Usuario {
      * Imprime los atributos del usuario en formato JSON con la fecha formateada.
      *
      * @return Una cadena JSON que representa los atributos del usuario.
+     * 
+     * @author David Gomez
      */
     public String toJsonString() {
         // Formatea la fecha como dd/MM/yyyy

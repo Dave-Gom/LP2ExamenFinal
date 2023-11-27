@@ -25,6 +25,8 @@ public class PagoServicio implements Extracto {
      * @param nombre       El nombre del servicio.
      * @param monto        El monto pagado.
      * @param numeroCuenta El número de cuenta asociado al pago.
+     * 
+     * @author David Gomez
      */
     public PagoServicio(String nombre, Double monto, String numeroCuenta) {
         this.nombServicio = nombre;
@@ -37,6 +39,8 @@ public class PagoServicio implements Extracto {
      * Obtiene el nombre del servicio asociado al pago.
      *
      * @return El nombre del servicio.
+     * 
+     * @author David Gomez
      */
     public String getNombServicio() {
         return nombServicio;
@@ -46,6 +50,8 @@ public class PagoServicio implements Extracto {
      * Obtiene el monto pagado en el servicio.
      *
      * @return El monto pagado.
+     * 
+     * @author David Gomez
      */
     public Double getMonto() {
         return monto;
@@ -55,6 +61,8 @@ public class PagoServicio implements Extracto {
      * Obtiene el número de cuenta asociado al pago.
      *
      * @return El número de cuenta asociado al pago.
+     * 
+     * @author David Gomez
      */
     public String getCuentaNro() {
         return cuentaNro;
@@ -64,6 +72,8 @@ public class PagoServicio implements Extracto {
      * Obtiene la fecha de la operación de pago.
      *
      * @return La fecha de la operación de pago.
+     * 
+     * @author David Gomez
      */
     public Date getFechaOp() {
         return fechaOp;
@@ -73,6 +83,8 @@ public class PagoServicio implements Extracto {
      * Genera una representación en formato JSON de los atributos de la clase.
      *
      * @return Una cadena que representa los atributos en formato JSON.
+     * 
+     * @author David Gomez
      */
     public String toJsonString() {
         // Formatea la fecha como "yyyy-MM-dd HH:mm:ss" (puedes ajustar el formato según tus preferencias)
@@ -92,6 +104,8 @@ public class PagoServicio implements Extracto {
 
     /**
      * Imprime la representación en formato JSON de los atributos en la consola.
+     * 
+     * @author David Gomez
      */
     @Override
     public void imprimir() {
@@ -104,6 +118,8 @@ public class PagoServicio implements Extracto {
      *
      * @return Una instancia de la clase actual que implementa la interfaz
      * Extracto.
+     * 
+     * @author David Gomez
      */
     @Override
     public Extracto getInstance() {

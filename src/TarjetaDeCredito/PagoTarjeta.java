@@ -25,6 +25,8 @@ public class PagoTarjeta implements Extracto {
      * @param cuenta        La cuenta de origen del pago de tarjeta.
      * @param numeroTarjeta El número de la tarjeta utilizada en el pago.
      * @param monto         El monto del pago de tarjeta.
+     * 
+     * @author David Gomez
      */
     public PagoTarjeta(String cuenta, String numeroTarjeta, double monto) {
         this.CuentaOrigen = cuenta;
@@ -37,6 +39,8 @@ public class PagoTarjeta implements Extracto {
      * Obtiene la cuenta de origen del pago de tarjeta.
      *
      * @return La cuenta de origen del pago de tarjeta.
+     * 
+     * @author David Gomez
      */
     public String getCuentaOrigen() {
         return CuentaOrigen;
@@ -46,6 +50,8 @@ public class PagoTarjeta implements Extracto {
      * Obtiene el número de tarjeta utilizado en el pago.
      *
      * @return El número de tarjeta utilizado en el pago.
+     * 
+     * @author David Gomez
      */
     public String getNroTarjeta() {
         return nroTarjeta;
@@ -55,6 +61,8 @@ public class PagoTarjeta implements Extracto {
      * Obtiene el monto del pago de tarjeta.
      *
      * @return El monto del pago de tarjeta.
+     * 
+     * @author David Gomez
      */
     public double getMonto() {
         return monto;
@@ -64,6 +72,8 @@ public class PagoTarjeta implements Extracto {
      * Obtiene la fecha de creación del pago de tarjeta.
      *
      * @return La fecha de creación del pago de tarjeta.
+     * 
+     * @author David Gomez
      */
     public Date getCreatedAt() {
         return createdAt;
@@ -73,6 +83,8 @@ public class PagoTarjeta implements Extracto {
      * Genera una representación en formato JSON de los atributos de la clase.
      *
      * @return Una cadena que representa los atributos en formato JSON.
+     * 
+     * @author David Gomez
      */
     public String toJsonString() {
         // Formatea la fecha como "yyyy-MM-dd HH:mm:ss" (puedes ajustar el formato según
@@ -93,6 +105,8 @@ public class PagoTarjeta implements Extracto {
 
     /**
      * Imprime la representación en formato JSON de los atributos en la consola.
+     * 
+     * @author David Gomez
      */
     @Override
     public void imprimir() {
@@ -105,6 +119,8 @@ public class PagoTarjeta implements Extracto {
      *
      * @return Una instancia de la clase actual que implementa la interfaz
      *         Visualizable.
+     * 
+     * @author David Gomez
      */
     @Override
     public Extracto getInstance() {
