@@ -157,6 +157,15 @@ public class InterfazEstatica extends javax.swing.JFrame {
         Saludo.setBackground(new java.awt.Color(10, 90, 10));
         Saludo.setForeground(new java.awt.Color(255, 255, 255));
         Saludo.setText("Hola,Usuario");
+        Saludo.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                SaludoAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
 
         Home.setBackground(new java.awt.Color(0, 0, 0));
         Home.setForeground(new java.awt.Color(255, 255, 255));
@@ -262,6 +271,10 @@ public class InterfazEstatica extends javax.swing.JFrame {
         InterfazHome h1 = new InterfazHome();
         showPanel(h1);
     }//GEN-LAST:event_HomeActionPerformed
+
+    private void SaludoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_SaludoAncestorAdded
+        Saludo.setText("Hola, " + user.getNombre());
+    }//GEN-LAST:event_SaludoAncestorAdded
     /**
      * funcion la cual muestra el JPanel jp 
      * en el panel contenidoDinamico de Interfaz1
