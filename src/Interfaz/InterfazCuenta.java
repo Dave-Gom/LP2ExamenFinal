@@ -49,19 +49,23 @@ public class InterfazCuenta extends javax.swing.JPanel {
 
         jLabel1.setText("jLabel1");
 
-        jPanel1.setBackground(new java.awt.Color(21, 125, 237));
+        jPanel1.setBackground(new java.awt.Color(15, 78, 151));
         jPanel1.setPreferredSize(new java.awt.Dimension(640, 470));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("tipoCuenta");
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Titular");
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Saldo Disponible:");
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Monto en GS");
 
         jTextArea1.setColumns(20);
