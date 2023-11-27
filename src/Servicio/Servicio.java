@@ -25,6 +25,8 @@ public class Servicio {
      *
      * @param nombreServicio El nombre del servicio.
      * @param entidadEmisora La entidad emisora del servicio.
+     * 
+     * @author David Gomez
      */
     public Servicio(String nombreServicio, String entidadEmisora) {
         this.nombre = nombreServicio;
@@ -36,6 +38,8 @@ public class Servicio {
      * genera un valor aleatorio.
      *
      * @return El monto del servicio.
+     * 
+     * @author David Gomez
      */
     public Double consultar() {
         if (monto == null) {
@@ -50,6 +54,8 @@ public class Servicio {
      * @param miCuenta La cuenta desde la cual se realizará el pago.
      * @throws Exception Si la cuenta no tiene saldo suficiente para realizar el
      *                   pago.
+     * 
+     * @author David Gomez
      */
     public void pagar(Cuenta miCuenta) throws Exception {
         if (miCuenta.getSaldo() >= this.monto) {
@@ -70,6 +76,8 @@ public class Servicio {
      * Obtiene el nombre del servicio.
      *
      * @return El nombre del servicio.
+     * 
+     * @author David Gomez
      */
     public String getNombre() {
         return nombre;
@@ -79,6 +87,8 @@ public class Servicio {
      * Obtiene la entidad emisora del servicio.
      *
      * @return La entidad emisora del servicio.
+     * 
+     * @author David Gomez
      */
     public String getEntidadEmisora() {
         return entidadEmisora;
@@ -88,6 +98,8 @@ public class Servicio {
      * Obtiene el monto del servicio.
      *
      * @return El monto del servicio.
+     * 
+     * @author David Gomez
      */
     public Double getMonto() {
         return monto;
@@ -97,6 +109,8 @@ public class Servicio {
      * Establece el monto del servicio.
      *
      * @param monto El nuevo monto del servicio.
+     * 
+     * @author David Gomez
      */
     public void setMonto(Double monto) {
         this.monto = monto;
