@@ -166,19 +166,17 @@ public class Seeders {
     private static void insertarTransaccionTC(BaseDeDatos base) {
         ArrayList<TarjetaDeCredito> misTC = base.getTarjetas();
         Random miRand = new Random();
-        
+
         for (TarjetaDeCredito tarjetaDeCredito : misTC) {
-            if ((miRand.nextInt() %10) < 5) {
-                for (int i = 0; i < miRand.nextInt() % 5; i++) {
-                    try {
-                        tarjetaDeCredito.pagar(Math.random() * 1000, "Transaccion generada automaticamente");
-                    } catch (Exception e) {
-                        System.out.println(e.getMessage() + tarjetaDeCredito.getTitular().getNombre() );
-                    }
+            for (int i = 0; i < 5; i++) {
+                try {
+                    tarjetaDeCredito.pagar(Math.random() * 1000, "Transaccion generada automaticamente");
+                } catch (Exception e) {
+                    System.out.println(e.getMessage() + tarjetaDeCredito.getTitular().getNombre());
                 }
             }
         }
-        
+
     }
 
 }
