@@ -64,6 +64,7 @@ public class InterfazLogin1 extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Malgun Gothic", 1, 12)); // NOI18N
         jLabel12.setText("Seguridad de Primer Nivel");
 
+        jTextPane1.setEditable(false);
         jScrollPane1.setViewportView(jTextPane1);
 
         jPanel3.setBackground(new java.awt.Color(255, 204, 153));
