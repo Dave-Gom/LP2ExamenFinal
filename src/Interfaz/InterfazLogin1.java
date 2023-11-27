@@ -9,7 +9,7 @@ import Usuario.Usuario;
  * @author 1
  */
 public class InterfazLogin1 extends javax.swing.JFrame {
-    BaseDeDatos B1;
+    private BaseDeDatos B1;
 
     public InterfazLogin1(BaseDeDatos B1) {
         this.B1 = B1;
@@ -72,6 +72,11 @@ public class InterfazLogin1 extends javax.swing.JFrame {
         jLabel4.setText("Ingrese sus Datos:");
 
         jTextField1.setText("Numero De Cuenta");
+        jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField1MouseClicked(evt);
+            }
+        });
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -90,6 +95,11 @@ public class InterfazLogin1 extends javax.swing.JFrame {
         });
 
         jPasswordField1.setText("12345678");
+        jPasswordField1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPasswordField1MouseClicked(evt);
+            }
+        });
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Pin de Cuenta");
@@ -136,7 +146,6 @@ public class InterfazLogin1 extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 3, true));
-        jPanel1.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel9.setFont(new java.awt.Font("Malgun Gothic", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -194,7 +203,7 @@ public class InterfazLogin1 extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(56, 56, 56)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(11, 11, 11)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -219,7 +228,7 @@ public class InterfazLogin1 extends javax.swing.JFrame {
                             .addComponent(jScrollPane1)
                             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(jLabel13)
                 .addGap(16, 16, 16))
         );
@@ -238,33 +247,41 @@ public class InterfazLogin1 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked
+         jTextField1.setText("");
+    }//GEN-LAST:event_jTextField1MouseClicked
+
+    private void jPasswordField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField1MouseClicked
+        jPasswordField1.setText("");
+    }//GEN-LAST:event_jPasswordField1MouseClicked
+
     private void CuentaActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_CuentaActionPerformed
         // verificamos que el usuario no sea nulo
         // ni muy largo, debido a que puede generar
         // un desbordamiento
         if (jTextField1.getText() != null && jTextField1.getText().length() < 10) {
             Cuenta cuenta = B1.getCuentaByNro(jTextField1.getText());
-            Usuario user = cuenta.getTitular();
-            //Usuario user = B1.getUserByCI(jTextField1.getText());
-            if (user != null && validarPin(user, jPasswordField1.getText())) {
-                this.setVisible(false);
-                InterfazEstatica p1 = new InterfazEstatica(user);
-                p1.setVisible(true);
-            } else {
-                System.out.println("Nro de cuenta o PIN de cuenta invalida");
-            }
-
+           if(cuenta != null){
+                Usuario user = cuenta.getTitular();
+                //Usuario user = B1.getUserByCI(jTextField1.getText());
+                char[] arrayC = jPasswordField1.getPassword();
+                String pass = new String(arrayC);
+                if (user != null && validarPin(user, pass)){
+                    this.setVisible(false);
+                    InterfazEstatica p1 = new InterfazEstatica(user);
+                    p1.setVisible(true);
+                } else {
+                    System.out.println("Nro de cuenta o PIN de cuenta invalida");
+                }
+           }
         } else {
             System.out.println("Nro de cuenta o PIN de cuenta invalida");
         }
 
-    }// GEN-LAST:event_CuentaActionPerformed
+    }
 
-    public boolean validarPin(Usuario User, String Pin) {
-        if (!User.getPin().equals(Pin))
-            return false;
-        else
-            return true;
+    public boolean validarPin(Usuario User, String Pin){
+        return User.getPin().equals(Pin);
     }
 
     private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {                                        

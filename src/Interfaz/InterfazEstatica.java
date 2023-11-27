@@ -263,7 +263,7 @@ public class InterfazEstatica extends javax.swing.JFrame {
     }//GEN-LAST:event_AyudaActionPerformed
 
     private void TransferenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TransferenciasActionPerformed
-        InterfazTransferencias f1 = new InterfazTransferencias();
+        InterfazTransferencias f1 = new InterfazTransferencias(user);
         showPanel(f1);
     }//GEN-LAST:event_TransferenciasActionPerformed
 
