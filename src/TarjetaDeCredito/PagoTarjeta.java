@@ -22,10 +22,10 @@ public class PagoTarjeta implements Extracto {
     /**
      * Constructor de la clase PagoTarjeta.
      *
-     * @param cuenta        La cuenta de origen del pago de tarjeta.
+     * @param cuenta La cuenta de origen del pago de tarjeta.
      * @param numeroTarjeta El número de la tarjeta utilizada en el pago.
-     * @param monto         El monto del pago de tarjeta.
-     * 
+     * @param monto El monto del pago de tarjeta.
+     *
      * @author David Gomez
      */
     public PagoTarjeta(String cuenta, String numeroTarjeta, double monto) {
@@ -39,7 +39,7 @@ public class PagoTarjeta implements Extracto {
      * Obtiene la cuenta de origen del pago de tarjeta.
      *
      * @return La cuenta de origen del pago de tarjeta.
-     * 
+     *
      * @author David Gomez
      */
     public String getCuentaOrigen() {
@@ -50,7 +50,7 @@ public class PagoTarjeta implements Extracto {
      * Obtiene el número de tarjeta utilizado en el pago.
      *
      * @return El número de tarjeta utilizado en el pago.
-     * 
+     *
      * @author David Gomez
      */
     public String getNroTarjeta() {
@@ -61,7 +61,7 @@ public class PagoTarjeta implements Extracto {
      * Obtiene el monto del pago de tarjeta.
      *
      * @return El monto del pago de tarjeta.
-     * 
+     *
      * @author David Gomez
      */
     public double getMonto() {
@@ -72,7 +72,7 @@ public class PagoTarjeta implements Extracto {
      * Obtiene la fecha de creación del pago de tarjeta.
      *
      * @return La fecha de creación del pago de tarjeta.
-     * 
+     *
      * @author David Gomez
      */
     public Date getCreatedAt() {
@@ -83,7 +83,7 @@ public class PagoTarjeta implements Extracto {
      * Genera una representación en formato JSON de los atributos de la clase.
      *
      * @return Una cadena que representa los atributos en formato JSON.
-     * 
+     *
      * @author David Gomez
      */
     public String toJsonString() {
@@ -105,26 +105,12 @@ public class PagoTarjeta implements Extracto {
 
     /**
      * Imprime la representación en formato JSON de los atributos en la consola.
-     * 
+     *
      * @author David Gomez
      */
     @Override
     public void imprimir() {
         System.out.println(toJsonString());
-    }
-
-    /**
-     * Devuelve una instancia de la clase actual que implementa la interfaz
-     * Visualizable.
-     *
-     * @return Una instancia de la clase actual que implementa la interfaz
-     *         Visualizable.
-     * 
-     * @author David Gomez
-     */
-    @Override
-    public Extracto getInstance() {
-        return this;
     }
 
 }

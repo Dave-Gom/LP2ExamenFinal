@@ -124,18 +124,4 @@ public class Transferencia implements Extracto {
         System.out.println(toJsonString());
     }
 
-    /**
-     * Devuelve una instancia de la clase actual que implementa la interfaz
-     * Visualizable.
-     *
-     * @return Una instancia de la clase actual que implementa la interfaz
-     * Visualizable.
-     * 
-     * @author David Gomez
-     */
-    @Override
-    public Extracto getInstance() {
-        return this;
-    }
-
 }

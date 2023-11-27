@@ -374,7 +374,7 @@ public class BaseDeDatos {
 
     /**
      * Returna la lista de tarjetas
-     * 
+     *
      * @return Lista de tarjetas de credito almacenada en la base de datos
      *
      * @author David Gomez
@@ -382,14 +382,14 @@ public class BaseDeDatos {
     public ArrayList<TarjetaDeCredito> getTarjetas() {
         return tarjetas;
     }
-    
+
     /**
      * Agrega un nuevo servicio a la lista de servicios.
      *
      * @param nombreServicio El nombre del servicio que se va a agregar.
      * @param entidadEmisora La entidad emisora asociada al servicio.
      * @return El nuevo servicio creado y agregado a la lista.
-     * 
+     *
      * @author David Gomez
      */
     public Servicio addServicio(String nombreServicio, String entidadEmisora) {
@@ -397,5 +397,33 @@ public class BaseDeDatos {
         // Agrega el nuevo servicio a la lista de servicios
         // (la implementación específica de cómo se almacenan los servicios depende de tu diseño).
         return nuevoServicio;
+    }
+
+    /**
+     * Obtiene el extracto de transacciones y pagos asociados a una tarjeta de
+     * crédito.
+     *
+     * @param nroTarjeta Número de tarjeta de crédito.
+     * @return Lista de objetos Extracto que representan transacciones y pagos
+     * asociados a la tarjeta.
+     */
+    public ArrayList<Extracto> getExtractoTC(String nroTarjeta) {
+        ArrayList<Extracto> datos = new ArrayList<>();
+
+        // Recorre las transacciones de tarjeta y agrega las que corresponden a la tarjeta especificada al extracto
+        for (TransaccionTarjeta transaccionTarjeta : transaccionesTarjeta) {
+            if (transaccionTarjeta.getNroTarjeta().compareTo(nroTarjeta) == 0) {
+                datos.add(transaccionTarjeta);
+            }
+        }
+
+        // Recorre los pagos de tarjeta y agrega los que corresponden a la tarjeta especificada al extracto
+        for (PagoTarjeta pagoTarjeta : pagosTarjetas) {
+            if (pagoTarjeta.getNroTarjeta().compareTo(nroTarjeta) == 0) {
+                datos.add(pagoTarjeta);
+            }
+        }
+
+        return datos;
     }
 }
