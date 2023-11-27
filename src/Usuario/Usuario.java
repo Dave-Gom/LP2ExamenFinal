@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import BaseDeDatos.BaseDeDatos;
+import TarjetaDeCredito.TarjetaDeCredito;
+import java.util.ArrayList;
 
 /**
  * La clase Usuario representa un usuario del sistema bancario.
@@ -284,6 +286,11 @@ public class Usuario {
                 + "}";
 
         return jsonString;
+    }
+    
+    
+    public ArrayList<TarjetaDeCredito> getTarjetas(){
+        return base.getTarjetasByUserCI(this.ci);
     }
 
 }

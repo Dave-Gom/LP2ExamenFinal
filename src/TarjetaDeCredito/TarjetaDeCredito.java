@@ -107,6 +107,11 @@ public class TarjetaDeCredito {
     public Double getDeudaTotal() {
         return deudaTotal;
     }
+    
+    
+    public String getCiUser(){
+        return ciUser;
+    }
 
     /**
      * Obtiene la fecha de cierre de la tarjeta.

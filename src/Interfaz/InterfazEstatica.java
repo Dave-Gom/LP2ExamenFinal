@@ -1,10 +1,12 @@
 package Interfaz;
 
+import TarjetaDeCredito.TarjetaDeCredito;
 import Usuario.Usuario;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.plaf.basic.BasicButtonUI;
@@ -243,7 +245,8 @@ public class InterfazEstatica extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void TarjetasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TarjetasActionPerformed
-        InterfazTarjetas t1 = new InterfazTarjetas();
+        ArrayList<TarjetaDeCredito> miTarjeta = user.base.getTarjetasByUserCI(user.getCi());
+        InterfazTarjetas t1 = new InterfazTarjetas(miTarjeta);
         showPanel(t1);
     }//GEN-LAST:event_TarjetasActionPerformed
 

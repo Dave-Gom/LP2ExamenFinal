@@ -426,4 +426,18 @@ public class BaseDeDatos {
 
         return datos;
     }
+    
+
+    public ArrayList<TarjetaDeCredito> getTarjetasByUserCI(String Ci){
+        ArrayList<TarjetaDeCredito> tarjetasUser = new ArrayList<>();
+        
+        for (TarjetaDeCredito tarjeta : tarjetas) {
+            if(tarjeta.getCiUser().compareTo(Ci) == 0){
+                tarjetasUser.add(tarjeta);
+            }
+        }
+        
+        return tarjetasUser;
+    }
+    
 }

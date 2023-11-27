@@ -15,7 +15,7 @@ public class WebBankingG13 {
         BaseDeDatos mainDB = new BaseDeDatos();
         
         Seeders.seed(mainDB);
-        mainDB.printCuentas();
+        mainDB.printTarjetas();
         InterfazLogin1 l1 = new InterfazLogin1(mainDB);
         l1.setVisible(true);
     }
