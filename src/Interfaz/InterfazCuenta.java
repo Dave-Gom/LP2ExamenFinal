@@ -31,33 +31,34 @@ public class InterfazCuenta extends javax.swing.JPanel {
         
         jLabel7.setText(CuentaAct.getTipoCuenta());
         jLabel2.setText(CuentaAct.getCiUser());
-        String Saldo = CuentaAct.getSaldo() + "";
-        jLabel8.setText("$" + Saldo + "   Gs");
+        jLabel8.setText("$" + String.format("%.2f", CuentaAct.getSaldo()) + "   Gs");
         ArrayList<Extracto> ExtractosCuenta = user.base.getExtractoCuenta(CuentaAct.getNroCuenta());
         if (!ExtractosCuenta.isEmpty()){
+            jTextArea1.setText("");
             for (Extracto transacciones : ExtractosCuenta){
                 if (transacciones instanceof Transferencia){
                     Transferencia transa = (Transferencia)transacciones;
                     String monto = transa.getMonto() + "";
-                    jTextArea1.setText(transa.getBancoDestino() + "    " + monto);
+                    jTextArea1.append(transa.getBancoOrigen() + "\t" + transa.getBancoDestino() + "\t\t" + monto + "\n");
                     System.out.println();
-
                 }
                 if (transacciones instanceof PagoServicio){
                     PagoServicio servi = (PagoServicio)transacciones;
                     String monto = servi.getMonto() + "";
-                    jTextArea1.setText(servi.getNombServicio() + "    " + monto);
+                    String Recu = jTextArea1.getText();
+                    jTextArea1.append(servi.getNombServicio() + "\t\t\t" + monto + "\n");
                     System.out.println();
                 }
                 if (transacciones instanceof PagoTarjeta){
                     PagoTarjeta tarjeta = (PagoTarjeta)transacciones;
                     String monto = tarjeta.getMonto() + "";
-                    jTextArea1.setText(tarjeta.getCuentaOrigen() + "    " + monto);
+                    String Recu = jTextArea1.getText();
+                    jTextArea1.append(tarjeta.getCuentaOrigen() + "\t\t\t" + monto + "\n");
                     System.out.println();
                 }
             }
         }else{
-            jTextArea1.setText("Aun No ha hecho ninguna transacciones :)");
+            jTextArea1.setText("Aun No ha hecho ninguna transaccion :)");
         }
     }
     
