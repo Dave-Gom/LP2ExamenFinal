@@ -27,7 +27,7 @@ public class PagoTarjetaInterfaz extends javax.swing.JPanel {
         initComponents();
         miTarjeta = tarjeta;
         titular = tarjeta.getTitular();
-        jLabel2.setText(tarjeta.getDeudaAlcierre().toString());
+        jLabel2.setText(String.format("%.2f", tarjeta.getDeudaAlcierre()));
         this.contenidoDinamico = contenidoDinamico;
 
     }

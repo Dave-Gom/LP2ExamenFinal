@@ -37,9 +37,12 @@ public class InterfazTarjetas extends javax.swing.JPanel {
         this.tarjetaSeleccionada = miTarjeta;
         jLabel1.setText(miTarjeta.getTipoTarjeta() + " " + miTarjeta.getAfinidad());
 
-        jLabel5.setText(miTarjeta.getDeudaAlcierre().toString());
-        jLabel6.setText(miTarjeta.getDeudaTotal().toString());
-        jLabel7.setText(miTarjeta.getLineaCredito().toString());
+        jLabel5.setText(String.format("%.2f", miTarjeta.getDeudaAlcierre()));
+        jLabel6.setText(String.format("%.2f", miTarjeta.getDeudaTotal()));
+        jLabel7.setText(String.format("%.2f", miTarjeta.getLineaCredito()));
+        jLabel2.setText("Deuda al Cierre: ");
+        jLabel3.setText("DeudaTotal");
+        jLabel4.setText("Linea de credito Total");
         jButton1.setText("Pagar Deuda");
 
         ArrayList<Extracto> extractoTarjeta = miTarjeta.getExtracto();
@@ -64,13 +67,13 @@ public class InterfazTarjetas extends javax.swing.JPanel {
 
             if (item instanceof PagoTarjeta) {
                 PagoTarjeta miPago = (PagoTarjeta) item;
-                ExtractoComponent extractoComponent = new ExtractoComponent("Pago", miPago.getMonto());
+                ExtractoComponent extractoComponent = new ExtractoComponent("Pago", new Double(String.format("%.2f", miPago.getMonto() * -1)));
                 panel.add(extractoComponent);
 
             } else {
                 TransaccionTarjeta miTransaccion = (TransaccionTarjeta) item;
                 ExtractoComponent extractoComponent = new ExtractoComponent(miTransaccion.getConcepto(),
-                        miTransaccion.getMonto());
+                        new Double(String.format("%.2f", miTransaccion.getMonto())));
                 panel.add(extractoComponent);
             }
         }
@@ -147,33 +150,32 @@ public class InterfazTarjetas extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel4)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 204, Short.MAX_VALUE)
-                            .addComponent(jLabel7))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel6))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5))
-                        .addComponent(jScrollPane2))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(123, 123, 123)
-                        .addComponent(jLabel1)
-                        .addGap(81, 81, 81)
-                        .addComponent(jButton1)))
-                .addContainerGap(35, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addGap(80, 80, 80)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel5))
+                                .addGap(157, 157, 157))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton1)))))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -185,12 +187,12 @@ public class InterfazTarjetas extends javax.swing.JPanel {
                     .addComponent(jLabel3)
                     .addComponent(jLabel6))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

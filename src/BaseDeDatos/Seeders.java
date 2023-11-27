@@ -9,6 +9,7 @@ import TarjetaDeCredito.TransaccionTarjeta;
 import Usuario.Usuario;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Random;
 
 /**
  * Clase abstracta Seeders para sembrar datos de prueba en la base de datos.
@@ -164,21 +165,20 @@ public class Seeders {
 
     private static void insertarTransaccionTC(BaseDeDatos base) {
         ArrayList<TarjetaDeCredito> misTC = base.getTarjetas();
-
+        Random miRand = new Random();
+        
         for (TarjetaDeCredito tarjetaDeCredito : misTC) {
-            if (Math.random() < 0.5) {
-                for (int i = 0; i < Math.random() * 5; i++) {
+            if ((miRand.nextInt() %10) < 5) {
+                for (int i = 0; i < miRand.nextInt() % 5; i++) {
                     try {
                         tarjetaDeCredito.pagar(Math.random() * 1000, "Transaccion generada automaticamente");
-                        if(i == 0){
-                            tarjetaDeCredito.pagar(1, "Transaccion generada automaticamente");
-                        }
                     } catch (Exception e) {
-                        System.out.println(e.getMessage());
+                        System.out.println(e.getMessage() + tarjetaDeCredito.getTitular().getNombre() );
                     }
                 }
             }
         }
+        
     }
 
 }
