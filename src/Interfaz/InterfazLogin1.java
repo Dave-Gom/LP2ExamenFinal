@@ -267,10 +267,14 @@ public class InterfazLogin1 extends javax.swing.JFrame {
             return true;
     }
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jTextField2ActionPerformed
+    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {                                        
+        jTextField1.setText("");
+    }
 
-    }// GEN-LAST:event_jTextField2ActionPerformed
-
+    private void jPasswordField1FocusGained(java.awt.event.FocusEvent evt) {                                            
+        jPasswordField1.setText("");
+    }
+    
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jTextField1ActionPerformed
 
     }// GEN-LAST:event_jTextField1ActionPerformed
