@@ -395,7 +395,8 @@ public class BaseDeDatos {
      */
     public Servicio addServicio(String nombreServicio, String entidadEmisora) {
         Servicio nuevoServicio = new Servicio(nombreServicio, entidadEmisora);
-        // Agrega el nuevo servicio a la lista de servicios
+        // Agrega el nuevo servicio a la lista de servicios\
+        serviciosDisponibles.add(nuevoServicio);
         // (la implementación específica de cómo se almacenan los servicios depende de
         // tu diseño).
         return nuevoServicio;
