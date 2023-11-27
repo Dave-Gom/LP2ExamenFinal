@@ -47,6 +47,8 @@ public class InterfazTransferencias extends javax.swing.JPanel {
         jTextField3 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
+        jPanel1.setBackground(new java.awt.Color(0, 204, 204));
+
         jLabel1.setText("Transferencias");
 
         jTextField5.setText("Banco Destino");
