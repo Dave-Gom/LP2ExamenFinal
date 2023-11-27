@@ -1,5 +1,6 @@
 package Interfaz;
 
+import Usuario.Usuario;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
@@ -19,8 +20,10 @@ public class InterfazEstatica extends javax.swing.JFrame {
     /**
      * Creates new form Interfaz1
      */
-    public InterfazEstatica() {
+    private Usuario user;
+    public InterfazEstatica(Usuario user) {
         initComponents();
+        this.user = user;
         InterfazHome h1 = new InterfazHome();
         JButton [] botones = {Ayuda,Cuenta,Home,Pagos,Tarjetas,Transferencias};
         for (JButton boton : botones){
@@ -236,7 +239,7 @@ public class InterfazEstatica extends javax.swing.JFrame {
     }//GEN-LAST:event_TarjetasActionPerformed
 
     private void CuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CuentaActionPerformed
-        InterfazCuenta c1 = new InterfazCuenta();
+        InterfazCuenta c1 = new InterfazCuenta(user);
         showPanel(c1);
     }//GEN-LAST:event_CuentaActionPerformed
 
