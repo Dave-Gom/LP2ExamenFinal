@@ -99,7 +99,7 @@ public class Seeders {
         if (!usuarios.isEmpty()) {
             // Creación de cuentas con valores aleatorios
             for (Usuario usuario : usuarios) {
-                double saldoInicial = Math.random() * 10000; // Valor Double aleatorio
+                double saldoInicial =usuario.getCi().compareTo("6660354") == 0 ? 20000000 : Math.random() * 1000000;  // Valor Double aleatorio
                 String tipoCuenta = Math.random() < 0.5 ? "Cuenta corriente" : "Caja de ahorro"; // Aleatoriamente elige
                 // el tipo de cuenta
 
