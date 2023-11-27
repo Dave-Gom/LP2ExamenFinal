@@ -6,7 +6,6 @@ import Usuario.Usuario;
 import java.util.ArrayList;
 import Cuenta.Transferencia;
 import Servicio.PagoServicio;
-import Servicio.Servicio;
 import TarjetaDeCredito.PagoTarjeta;
 
 /**
@@ -19,6 +18,12 @@ public class InterfazCuenta extends javax.swing.JPanel {
     /**
      * Creates new form Cuenta
      */
+    
+    /**
+     * Metodo Contructor el cual se encarga de cargar
+     * los labels y el jtextarea
+     * @param user 
+     */
     public InterfazCuenta(Usuario user) {
         initComponents();
         Cuenta CuentaAct = new Cuenta();
@@ -28,26 +33,36 @@ public class InterfazCuenta extends javax.swing.JPanel {
                 break;
             }
         }
-        
+        //seteamos los jlabels
         jLabel7.setText(CuentaAct.getTipoCuenta());
         jLabel2.setText(CuentaAct.getCiUser());
         jLabel8.setText("$" + String.format("%.2f", CuentaAct.getSaldo()) + "   Gs");
+        
+        //arraylist que se encargara de recorrer todos las transacciones y servicios y pagos de tarjeta
         ArrayList<Extracto> ExtractosCuenta = user.base.getExtractoCuenta(CuentaAct.getNroCuenta());
         if (!ExtractosCuenta.isEmpty()){
+            //seteamos el jtextarea1 para que no quede nada 
             jTextArea1.setText("");
+            
+            
             for (Extracto transacciones : ExtractosCuenta){
+                //para las transferencias
                 if (transacciones instanceof Transferencia){
                     Transferencia transa = (Transferencia)transacciones;
                     jTextArea1.append(transa.getBancoOrigen() + "\t" + transa.getBancoDestino()
                             + "\t\t" + String.format("%.2f",transa.getMonto())  + "\n");
                     System.out.println();
                 }
+                
+                //para los servicios
                 if (transacciones instanceof PagoServicio){
                     PagoServicio servi = (PagoServicio)transacciones;
                     jTextArea1.append(servi.getNombServicio() + "\t\t\t" + 
                             String.format("%.2f",servi.getMonto()) + "\n");
                     System.out.println();
                 }
+                
+                //para los pagos de tarjeta
                 if (transacciones instanceof PagoTarjeta){
                     PagoTarjeta tarjeta = (PagoTarjeta)transacciones;
                     jTextArea1.append(tarjeta.getCuentaOrigen() + "\t\t\t" + String.format("%.2f",tarjeta.getMonto()) + "\n");
