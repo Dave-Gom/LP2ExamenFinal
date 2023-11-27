@@ -1,6 +1,7 @@
 package Interfaz;
 
 import Cuenta.Cuenta;
+import Usuario.Usuario;
 
 /**
  * Clase que extiende de Jpanel lo cual servira para mostrar
@@ -12,10 +13,14 @@ public class InterfazCuenta extends javax.swing.JPanel {
     /**
      * Creates new form Cuenta
      */
-    public InterfazCuenta() {
+    public InterfazCuenta(Usuario user) {
         initComponents();
-//        CuentaAct = new Cuenta(42433,"Alan Fabricio Nuñez",10000000,"Corriente","44876878","12345");
-        jLabel3.setText(CuentaAct.getTipoCuenta()+":");
+        Cuenta CuentaAct = new Cuenta();
+        for (Cuenta cuenta : user.base.getCuentas()){
+            CuentaAct = cuenta;
+            break;
+        }
+        jLabel3.setText(CuentaAct.getTipoCuenta());
         jLabel4.setText(CuentaAct.getCiUser());
         String Saldo = CuentaAct.getSaldo() + "";
         jLabel6.setText("$" + Saldo + "   Gs");
@@ -33,7 +38,6 @@ public class InterfazCuenta extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -45,10 +49,6 @@ public class InterfazCuenta extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(21, 125, 237));
         jPanel1.setPreferredSize(new java.awt.Dimension(640, 470));
-
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Cuenta");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -82,19 +82,15 @@ public class InterfazCuenta extends javax.swing.JPanel {
                             .addComponent(jLabel5)
                             .addComponent(jLabel4)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(100, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addGap(30, 30, 30)
@@ -124,7 +120,6 @@ public class InterfazCuenta extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

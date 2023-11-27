@@ -17,6 +17,8 @@ public class Cuenta {
     private String nroCuenta;
     public BaseDeDatos base;
 
+    public Cuenta(){
+    }
     public Cuenta(String ciUser, String tipoCuenta, double SaldoInicial,
             /* @Author: DG */ BaseDeDatos base) throws Exception {
 

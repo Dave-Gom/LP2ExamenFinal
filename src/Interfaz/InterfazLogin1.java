@@ -6,10 +6,7 @@ import Usuario.Usuario;
  * @author 1
  */
 public class InterfazLogin1 extends javax.swing.JFrame {
-
-
     BaseDeDatos B1;
-    
     public InterfazLogin1(BaseDeDatos B1) {
         this.B1 = B1;
         initComponents();
@@ -212,7 +209,7 @@ public class InterfazLogin1 extends javax.swing.JFrame {
             Usuario user = B1.getUserByCI(jTextField1.getText());
             if (user != null && validarPin(user,jTextField2.getText())){
                 this.setVisible(false);
-                InterfazEstatica p1 = new InterfazEstatica();
+                InterfazEstatica p1 = new InterfazEstatica(user);
                 p1.setVisible(true);
             }else{
                 System.out.println("CI o PIN de cuenta invalida");
