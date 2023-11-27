@@ -14,7 +14,7 @@ public class InterfazAcercaDelSistema extends javax.swing.JPanel {
     /**
      * Creates new form Ayuda
      */
-    public InterfazAcercaDelSistema() throws InterruptedException {
+    public InterfazAcercaDelSistema(){
         initComponents();
         hilouno hilo1 = new hilouno();
         showPanel(hilo1,jPanel4);
