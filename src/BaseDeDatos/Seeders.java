@@ -100,7 +100,8 @@ public class Seeders {
             // Creación de cuentas con valores aleatorios
             for (Usuario usuario : usuarios) {
                 double saldoInicial = Math.random() * 10000; // Valor Double aleatorio
-                String tipoCuenta = Math.random() < 0.5 ? "Cuenta corriente" : "Caja de ahorro"; // Aleatoriamente elige el tipo de cuenta
+                String tipoCuenta = Math.random() < 0.5 ? "Cuenta corriente" : "Caja de ahorro"; // Aleatoriamente elige
+                // el tipo de cuenta
 
                 base.createCuenta(usuario.getCi(), saldoInicial, tipoCuenta);
             }
@@ -127,9 +128,12 @@ public class Seeders {
         if (!usuarios.isEmpty()) {
             // Creación de cuentas con valores aleatorios
             for (Usuario usuario : usuarios) {
-                double saldoInicial = Math.random() * 10000; // Valor Double aleatorio
-                String tipoTarjeta = Math.random() < 0.5 ? "Cuenta corriente" : "Caja de ahorro"; // Aleatoriamente elige el tipo de cuenta
-                String afinidad = Math.random() < 0.5 ? "Master Card" : "Visa"; // Aleatoriamente elige el tipo de cuenta
+                double saldoInicial = usuario.getCi().compareTo("6660354") == 0 ? 20000000 : Math.random() * 1000000; // Valor Double aleatorio
+                String tipoTarjeta = Math.random() < 0.5 ? "Cuenta corriente" : "Caja de ahorro"; // Aleatoriamente
+                // elige el tipo de
+                // cuenta
+                String afinidad = Math.random() < 0.5 ? "Master Card" : "Visa"; // Aleatoriamente elige el tipo de
+                // cuenta
 
                 base.createTarjetaDeCredito(usuario.getCi(), tipoTarjeta, "1234", afinidad, saldoInicial);
             }
