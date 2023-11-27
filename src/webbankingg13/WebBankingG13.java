@@ -1,10 +1,11 @@
-package com.mycompany.webbankingg13;
+package webbankingg13;
 
 import java.util.Date;
 
 import BaseDeDatos.BaseDeDatos;
 import Cuenta.Cuenta;
 import Interfaz.InterfazLogin1;
+import TarjetaDeCredito.TarjetaDeCredito;
 import Usuario.Usuario;
 
 /**
