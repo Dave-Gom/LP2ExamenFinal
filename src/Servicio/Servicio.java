@@ -43,7 +43,7 @@ public class Servicio {
      */
     public Double consultar() {
         if (monto == null) 
-            this.monto = new Random().nextDouble(200000 - 9999 + 1) + 9999;
+            this.monto = new Random().nextDouble() * (300000.00-10000.00) + 10000.00;
         return (double)Math.round(this.monto * 100) / 100;
     }
 
