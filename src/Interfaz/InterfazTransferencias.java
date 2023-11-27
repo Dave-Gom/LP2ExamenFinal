@@ -6,7 +6,6 @@ package Interfaz;
 
 import Cuenta.Cuenta;
 import Usuario.Usuario;
-import BaseDeDatos.BaseDeDatos;
 import Cuenta.Transferencia;
 import javax.swing.JOptionPane;
 
