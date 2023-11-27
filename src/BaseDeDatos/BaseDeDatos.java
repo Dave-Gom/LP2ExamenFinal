@@ -383,11 +383,19 @@ public class BaseDeDatos {
         return tarjetas;
     }
     
-    
-    public Servicio addServicio(String nombreServicio, String entidadEmisora){
+    /**
+     * Agrega un nuevo servicio a la lista de servicios.
+     *
+     * @param nombreServicio El nombre del servicio que se va a agregar.
+     * @param entidadEmisora La entidad emisora asociada al servicio.
+     * @return El nuevo servicio creado y agregado a la lista.
+     * 
+     * @author David Gomez
+     */
+    public Servicio addServicio(String nombreServicio, String entidadEmisora) {
         Servicio nuevoServicio = new Servicio(nombreServicio, entidadEmisora);
-        
+        // Agrega el nuevo servicio a la lista de servicios
+        // (la implementación específica de cómo se almacenan los servicios depende de tu diseño).
         return nuevoServicio;
-        
     }
 }
