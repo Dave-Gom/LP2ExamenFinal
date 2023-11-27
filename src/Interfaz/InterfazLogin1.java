@@ -218,7 +218,7 @@ public class InterfazLogin1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CuentaActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_CuentaActionPerformed
-        // verificamos que el usuario no sea null
+        // verificamos que el usuario no sea nulo
         // ni muy largo, debido a que puede generar
         // un desbordamiento
         if (jTextField1.getText() != null && jTextField1.getText().length() < 10) {
