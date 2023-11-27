@@ -253,7 +253,7 @@ public class InterfazEstatica extends javax.swing.JFrame {
     }//GEN-LAST:event_CuentaActionPerformed
 
     private void PagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PagosActionPerformed
-        InterfazPagos p1 = new InterfazPagos();
+        InterfazPagos p1 = new InterfazPagos(user);
         showPanel(p1);
     }//GEN-LAST:event_PagosActionPerformed
 
