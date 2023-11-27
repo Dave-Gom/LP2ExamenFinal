@@ -440,4 +440,16 @@ public class BaseDeDatos {
         return tarjetasUser;
     }
     
+    public ArrayList<Cuenta> getCuentasByUserCi(String Ci){
+        ArrayList<Cuenta> cuentasUser = new ArrayList<>();
+        
+        for (Cuenta cuenta : cuentas) {
+            if(cuenta.getCiUser().compareTo(Ci) == 0){
+                cuentasUser.add(cuenta);
+            }
+        }
+        
+        return cuentasUser;
+    }
+    
 }

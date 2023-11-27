@@ -2,7 +2,10 @@ package TarjetaDeCredito;
 
 import BaseDeDatos.BaseDeDatos;
 import Cuenta.Cuenta;
+import Extracto.Extracto;
+import Usuario.Usuario;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -266,6 +269,15 @@ public class TarjetaDeCredito {
                 + "\"lineaCredito\":" + lineaCredito + ","
                 + "\"fechaCierre\":\"" + dateFormat.format(fechaCierre) + "\""
                 + "}";
+    }
+    
+    
+    public ArrayList<Extracto> getExtracto(){
+        return this.miBase.getExtractoTC(this.nroTarjeta);
+    }
+    
+    public Usuario getTitular(){
+        return miBase.getUserByCI(ciUser);
     }
 
 }

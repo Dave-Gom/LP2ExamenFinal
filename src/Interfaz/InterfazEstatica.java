@@ -59,6 +59,10 @@ public class InterfazEstatica extends javax.swing.JFrame {
         showPanel(h1);
     }
     
+    public void navegateTo(javax.swing.JPanel interfaz){
+        showPanel(interfaz);
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -246,7 +250,7 @@ public class InterfazEstatica extends javax.swing.JFrame {
 
     private void TarjetasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TarjetasActionPerformed
         ArrayList<TarjetaDeCredito> miTarjeta = user.base.getTarjetasByUserCI(user.getCi());
-        InterfazTarjetas t1 = new InterfazTarjetas(miTarjeta);
+        InterfazTarjetas t1 = new InterfazTarjetas(miTarjeta.get(0), contenidoDinamico);
         showPanel(t1);
     }//GEN-LAST:event_TarjetasActionPerformed
 
