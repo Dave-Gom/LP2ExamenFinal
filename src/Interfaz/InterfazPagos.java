@@ -199,9 +199,7 @@ public class InterfazPagos extends javax.swing.JPanel{
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 635, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 635, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,6 +237,9 @@ public class InterfazPagos extends javax.swing.JPanel{
     public void showOptions(String Coincidencias, ArrayList<Servicio> Prin){
         int contador = 0;
         int []coin = new int[100];
+        for(int i = 0; i < 100; i++){
+            coin[i] = 0;
+        }
         Servicio [] coinci = new Servicio[100];
         int indice = 0;
         Servicio principal = new Servicio("","");
@@ -247,7 +248,6 @@ public class InterfazPagos extends javax.swing.JPanel{
                nuestros servicios con el que ingreso el usuario. */
         for(Servicio servi : Prin){
             String Servid = servi.getNombre();
-            System.out.println("Servi:" + Servid);
             for(int j = 0; j < Coincidencias.length(); j++){
                 if(Servid.charAt(j) == Coincidencias.charAt(j)){
                     contador++;
@@ -261,7 +261,6 @@ public class InterfazPagos extends javax.swing.JPanel{
                 coinci[indice] = new Servicio("","");
                 coinci[indice]= servi;
                 coin[indice] = contador;
-                System.out.println("coin:"+  coin[indice]);
                 indice++;
             }
             
@@ -290,7 +289,6 @@ public class InterfazPagos extends javax.swing.JPanel{
     }//GEN-LAST:event_jTextField1FocusLost
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        System.out.println("tata" + Principales[0].getNombre());
         Interfaz_ConfirmacionDePago inter = new Interfaz_ConfirmacionDePago(user,Principales[0]);
         showPanel(inter);
     }//GEN-LAST:event_jButton8ActionPerformed
