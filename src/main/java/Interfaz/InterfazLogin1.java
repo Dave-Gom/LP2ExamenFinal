@@ -205,18 +205,32 @@ public class InterfazLogin1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CuentaActionPerformed
-        if (jTextField1.getText() != null){
+        //verificamos que el usuario no sea nulo
+        //ni muy largo, debido a que puede generar
+        //un desbordamiento
+        if (jTextField1.getText() != null && jTextField1.getText().length() < 10){
             Usuario user = B1.getUserByCI(jTextField1.getText());
+            if (user != null && validarPin(user,jTextField2.getText())){
+                this.setVisible(false);
+                InterfazEstatica p1 = new InterfazEstatica();
+                p1.setVisible(true);
+            }else{
+                System.out.println("CI o PIN de cuenta invalida");
+            }
+                
         }else{
-            System.out.println("CI o Contraseña invalida");
+            System.out.println("CI o PIN de cuenta invalida");
         }
-        this.setVisible(false);
-        InterfazEstatica p1 = new InterfazEstatica();
-        p1.setVisible(true);
-    }//GEN-LAST:event_CuentaActionPerformed
 
+    }//GEN-LAST:event_CuentaActionPerformed
+    public boolean validarPin(Usuario User,String Pin){
+        if (!User.getPin().equals(Pin))
+            return false;
+        else
+            return true;
+    }
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
