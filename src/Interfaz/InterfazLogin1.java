@@ -3,6 +3,7 @@ package Interfaz;
 import BaseDeDatos.BaseDeDatos;
 import Cuenta.Cuenta;
 import Usuario.Usuario;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -272,10 +273,12 @@ public class InterfazLogin1 extends javax.swing.JFrame {
                     p1.setVisible(true);
                 } else {
                     System.out.println("Nro de cuenta o PIN de cuenta invalida");
+                    JOptionPane.showMessageDialog(null,"Nro de cuenta o PIN de cuenta invalida");
                 }
            }
         } else {
             System.out.println("Nro de cuenta o PIN de cuenta invalida");
+            JOptionPane.showMessageDialog(null,"Nro de cuenta o PIN de cuenta invalida");
         }
 
     }
