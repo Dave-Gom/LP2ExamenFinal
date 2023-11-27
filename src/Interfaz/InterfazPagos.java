@@ -219,13 +219,6 @@ public class InterfazPagos extends javax.swing.JPanel{
 
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
         String coincidencias = jTextField1.getText();
-        //jLabel5.setText("");
-        user.base.addServiciosDisponibles(new Servicio("Factura ANDE", "ANDE"));
-        user.base.addServiciosDisponibles(new Servicio("Claro", "Claro"));
-        user.base.addServiciosDisponibles(new Servicio("Personal", "Telecom"));
-        user.base.addServiciosDisponibles(new Servicio("Prime Viddeo", "Amazon"));
-        user.base.addServiciosDisponibles(new Servicio("Tigo Money", "Tigo"));
-        
         ArrayList<Servicio> Prin = user.base.getServicios();
         
         if(coincidencias != "")
