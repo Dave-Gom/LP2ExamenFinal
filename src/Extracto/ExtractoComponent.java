@@ -23,7 +23,7 @@ public class ExtractoComponent extends JPanel {
     private void initComponents(String concepto, double monto) {
         setLayout(new GridLayout(1, 2));
 
-        montoLabel = new JLabel("Monto: " + monto);
+        montoLabel = new JLabel("Monto: " + String.format("%.2f", monto));
         conceptoLabel = new JLabel("Concepto: " + concepto);
 
         add(conceptoLabel);
