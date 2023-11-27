@@ -95,7 +95,7 @@ public class BaseDeDatos {
      *
      * @param cedula El número de cédula de identidad del usuario.
      * @return El usuario con la cédula proporcionada, o null si no se
-     * encuentra.
+     *         encuentra.
      *
      * @author David Gomez
      */
@@ -147,7 +147,7 @@ public class BaseDeDatos {
      *
      * @param nuevaTarjeta La tarjeta que se va a agregar.
      * @throws Exception Si ya existe una tarjeta con el mismo número en la base
-     * de datos.
+     *                   de datos.
      *
      * @author David Gomez
      */
@@ -217,15 +217,15 @@ public class BaseDeDatos {
      * Crea un nuevo objeto Usuario con los atributos proporcionados, lo agrega
      * a la lista de usuarios y lo devuelve.
      *
-     * @param ci Cédula de identidad del nuevo usuario.
-     * @param pin PIN de acceso del nuevo usuario.
+     * @param ci               Cédula de identidad del nuevo usuario.
+     * @param pin              PIN de acceso del nuevo usuario.
      * @param pinTransaccional PIN para transacciones del nuevo usuario.
-     * @param email Correo electrónico del nuevo usuario.
-     * @param nacionalidad Nacionalidad del nuevo usuario.
-     * @param nombre Nombre del nuevo usuario.
-     * @param apellido Apellido del nuevo usuario.
-     * @param fechaNacimiento Fecha de nacimiento del nuevo usuario.
-     * @param telefono Número de teléfono del nuevo usuario.
+     * @param email            Correo electrónico del nuevo usuario.
+     * @param nacionalidad     Nacionalidad del nuevo usuario.
+     * @param nombre           Nombre del nuevo usuario.
+     * @param apellido         Apellido del nuevo usuario.
+     * @param fechaNacimiento  Fecha de nacimiento del nuevo usuario.
+     * @param telefono         Número de teléfono del nuevo usuario.
      * @return El nuevo usuario creado y agregado a la lista.
      *
      * @author David Gomez
@@ -254,9 +254,9 @@ public class BaseDeDatos {
      * transacciones y pagos almacenados en la base de datos.
      *
      * @param nroCuenta Número de cuenta para el cual se desea obtener el
-     * extracto.
+     *                  extracto.
      * @return Una lista de objetos Extracto que representan las transacciones y
-     * pagos asociados a la cuenta.
+     *         pagos asociados a la cuenta.
      *
      * @author David Gomez
      */
@@ -294,11 +294,11 @@ public class BaseDeDatos {
     /**
      * Crea una nueva cuenta para un usuario con la información proporcionada.
      *
-     * @param ciUser Cédula de identidad del usuario asociado a la cuenta.
-     * @param saldo Saldo inicial de la cuenta.
+     * @param ciUser     Cédula de identidad del usuario asociado a la cuenta.
+     * @param saldo      Saldo inicial de la cuenta.
      * @param tipoCuenta Tipo de cuenta a crear.
      * @return Una instancia de la clase Cuenta recién creada o null si hay un
-     * error durante la creación.
+     *         error durante la creación.
      *
      * @author David Gomez
      */
@@ -316,7 +316,7 @@ public class BaseDeDatos {
      * Obtiene la lista de cuentas almacenadas en la base de datos.
      *
      * @return Una lista de objetos Cuenta que representan las cuentas
-     * almacenadas.
+     *         almacenadas.
      *
      * @author David Gomez
      */
@@ -343,7 +343,8 @@ public class BaseDeDatos {
         System.out.println(stringFormateado);
     }
 
-    public TarjetaDeCredito createTarjetaDeCredito(String ciUser, String tipo, String pinT, String afinidad, Double lineaC) {
+    public TarjetaDeCredito createTarjetaDeCredito(String ciUser, String tipo, String pinT, String afinidad,
+            Double lineaC) {
         try {
             TarjetaDeCredito nuevaTarjeta = new TarjetaDeCredito(ciUser, tipo, pinT, afinidad, lineaC, this);
             return nuevaTarjeta;
@@ -395,7 +396,8 @@ public class BaseDeDatos {
     public Servicio addServicio(String nombreServicio, String entidadEmisora) {
         Servicio nuevoServicio = new Servicio(nombreServicio, entidadEmisora);
         // Agrega el nuevo servicio a la lista de servicios
-        // (la implementación específica de cómo se almacenan los servicios depende de tu diseño).
+        // (la implementación específica de cómo se almacenan los servicios depende de
+        // tu diseño).
         return nuevoServicio;
     }
 
@@ -405,19 +407,21 @@ public class BaseDeDatos {
      *
      * @param nroTarjeta Número de tarjeta de crédito.
      * @return Lista de objetos Extracto que representan transacciones y pagos
-     * asociados a la tarjeta.
+     *         asociados a la tarjeta.
      */
     public ArrayList<Extracto> getExtractoTC(String nroTarjeta) {
         ArrayList<Extracto> datos = new ArrayList<>();
 
-        // Recorre las transacciones de tarjeta y agrega las que corresponden a la tarjeta especificada al extracto
+        // Recorre las transacciones de tarjeta y agrega las que corresponden a la
+        // tarjeta especificada al extracto
         for (TransaccionTarjeta transaccionTarjeta : transaccionesTarjeta) {
             if (transaccionTarjeta.getNroTarjeta().compareTo(nroTarjeta) == 0) {
                 datos.add(transaccionTarjeta);
             }
         }
 
-        // Recorre los pagos de tarjeta y agrega los que corresponden a la tarjeta especificada al extracto
+        // Recorre los pagos de tarjeta y agrega los que corresponden a la tarjeta
+        // especificada al extracto
         for (PagoTarjeta pagoTarjeta : pagosTarjetas) {
             if (pagoTarjeta.getNroTarjeta().compareTo(nroTarjeta) == 0) {
                 datos.add(pagoTarjeta);
@@ -426,25 +430,41 @@ public class BaseDeDatos {
 
         return datos;
     }
-    /** Retorna los servicios Disponibles.
+
+    /**
+     * Retorna los servicios Disponibles.
      * 
      * @return ArrayList: Lista de Servicios Disponibles Almacenados en
-     * la base de datos.
+     *         la base de datos.
      * 
      * @author Axel Nuñez;
      */
     public ArrayList<Servicio> getServicios() {
         return serviciosDisponibles;
     }
-    
-     /**
-     * Agrega un servicios a la lista de de servicios Disponibles.
-     *
-     * @param servicioAgregado Servicio: Servicio que se desea agregar.
-     *
-     * @author Axel Nuñez
-     */
-    public void addServiciosDisponibles(Servicio servicioAgregado) {
-        serviciosDisponibles.add(servicioAgregado);
+
+    public ArrayList<TarjetaDeCredito> getTarjetasByUserCI(String Ci) {
+        ArrayList<TarjetaDeCredito> tarjetasUser = new ArrayList<>();
+
+        for (TarjetaDeCredito tarjeta : tarjetas) {
+            if (tarjeta.getCiUser().compareTo(Ci) == 0) {
+                tarjetasUser.add(tarjeta);
+            }
+        }
+
+        return tarjetasUser;
     }
+
+    public ArrayList<Cuenta> getCuentasByUserCi(String Ci) {
+        ArrayList<Cuenta> cuentasUser = new ArrayList<>();
+
+        for (Cuenta cuenta : cuentas) {
+            if (cuenta.getCiUser().compareTo(Ci) == 0) {
+                cuentasUser.add(cuenta);
+            }
+        }
+
+        return cuentasUser;
+    }
+
 }

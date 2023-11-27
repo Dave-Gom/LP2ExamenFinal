@@ -4,9 +4,12 @@
  */
 package BaseDeDatos;
 
+import TarjetaDeCredito.TarjetaDeCredito;
+import TarjetaDeCredito.TransaccionTarjeta;
 import Usuario.Usuario;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Random;
 
 /**
  * Clase abstracta Seeders para sembrar datos de prueba en la base de datos.
@@ -29,6 +32,7 @@ public class Seeders {
             insertCuentas(base);
             insertTarjetas(base);
             insertServicios(base);
+            insertarTransaccionTC(base);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -113,7 +117,7 @@ public class Seeders {
      * @param base La base de datos en la que se insertarán las tarjetas de
      * crédito.
      * @throws Exception Si no hay usuarios en la base.
-     * 
+     *
      * @author David Gomez
      */
     private static void insertTarjetas(BaseDeDatos base) throws Exception {
@@ -138,7 +142,7 @@ public class Seeders {
      * Inserta servicios en la base de datos.
      *
      * @param base La base de datos en la que se insertarán los servicios.
-     * 
+     *
      * @author David Gomez
      */
     private static void insertServicios(BaseDeDatos base) {
@@ -157,6 +161,24 @@ public class Seeders {
         base.addServicio("Gimnasio", "FitClub");
         base.addServicio("Reparación de Electrodomésticos", "FixIt");
         base.addServicio("Asesoría Legal", "BufeteJurídicoXYZ");
+    }
+
+    private static void insertarTransaccionTC(BaseDeDatos base) {
+        ArrayList<TarjetaDeCredito> misTC = base.getTarjetas();
+        Random miRand = new Random();
+        
+        for (TarjetaDeCredito tarjetaDeCredito : misTC) {
+            if ((miRand.nextInt() %10) < 5) {
+                for (int i = 0; i < miRand.nextInt() % 5; i++) {
+                    try {
+                        tarjetaDeCredito.pagar(Math.random() * 1000, "Transaccion generada automaticamente");
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage() + tarjetaDeCredito.getTitular().getNombre() );
+                    }
+                }
+            }
+        }
+        
     }
 
 }
