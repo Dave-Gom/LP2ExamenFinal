@@ -112,5 +112,5 @@ public class PagoTarjeta implements Extracto {
     public void imprimir() {
         System.out.println(toJsonString());
     }
-
+    
 }
