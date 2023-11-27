@@ -302,7 +302,7 @@ public class BaseDeDatos {
      *
      * @author David Gomez
      */
-    public Cuenta createCuenta(String ciUser, int saldo, String tipoCuenta) {
+    public Cuenta createCuenta(String ciUser, double saldo, String tipoCuenta) {
         try {
             Cuenta nuevaCuenta = new Cuenta(ciUser, tipoCuenta, saldo, this);
             return nuevaCuenta;

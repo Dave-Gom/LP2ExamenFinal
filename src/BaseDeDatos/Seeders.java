@@ -9,16 +9,39 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
+ * Clase abstracta Seeders para sembrar datos de prueba en la base de datos.
+ * Contiene métodos para la creación de usuarios y cuentas. Implementa métodos
+ * abstractos en clases derivadas.
  *
- * @author bancocontinental05
+ * @author David Gomez
  */
-public abstract class Seeders {
+public class Seeders {
 
-    public void seed(BaseDeDatos base) {
-        createUsuarios(base);
+    /**
+     * Método principal para sembrar datos en la base de datos.
+     *
+     * @param base Base de datos en la que se sembrarán los datos.
+     * @author David Gomez
+     */
+    public static void seed(BaseDeDatos base) {
+        try {
+            insertUsuarios(base);
+            insertCuentas(base);
+            insertTarjetas(base);
+            insertServicios(base);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
-    private void createUsuarios(BaseDeDatos base) {
+    /**
+     * Método para la creación de usuarios de prueba en la base de datos.
+     *
+     * @param base Base de datos en la que se crearán los usuarios.
+     * @author David Gomez
+     */
+    private static void insertUsuarios(BaseDeDatos base) {
+        // Creación de usuarios de prueba
         Usuario user1 = base.createUsuario("6660354", "123456", "654321", "davegomez426@gmail.com", "Paraguaya",
                 "David Emmanuel", "Gomez Arca", new Date(1, 23, 1983), "0772411806");
 
@@ -57,13 +80,83 @@ public abstract class Seeders {
 
     }
 
-    private void createCuentas(BaseDeDatos base) throws Exception {
-        
-       ArrayList<Usuario> usuarios = base.getUsuarios();
-       
-        for (Object usuario : usuarios) {
-            
-        }
+    /**
+     * Método para la creación de cuentas de prueba en la base de datos.
+     *
+     * @param base Base de datos en la que se crearán las cuentas.
+     * @throws Exception Si no hay usuarios en la base de datos.
+     * @author David Gomez
+     */
+    private static void insertCuentas(BaseDeDatos base) throws Exception {
+        // Obtención de la lista de usuarios en la base de datos
+        ArrayList<Usuario> usuarios = base.getUsuarios();
 
+        // Verificación de existencia de usuarios
+        if (!usuarios.isEmpty()) {
+            // Creación de cuentas con valores aleatorios
+            for (Usuario usuario : usuarios) {
+                double saldoInicial = Math.random() * 10000; // Valor Double aleatorio
+                String tipoCuenta = Math.random() < 0.5 ? "Cuenta corriente" : "Caja de ahorro"; // Aleatoriamente elige el tipo de cuenta
+
+                base.createCuenta(usuario.getCi(), saldoInicial, tipoCuenta);
+            }
+
+        } else {
+            throw new Exception("No hay usuarios en la base");
+        }
     }
+
+    /**
+     * Inserta tarjetas de crédito en la base de datos para cada usuario
+     * existente.
+     *
+     * @param base La base de datos en la que se insertarán las tarjetas de
+     * crédito.
+     * @throws Exception Si no hay usuarios en la base.
+     * 
+     * @author David Gomez
+     */
+    private static void insertTarjetas(BaseDeDatos base) throws Exception {
+        ArrayList<Usuario> usuarios = base.getUsuarios();
+
+        // Verificación de existencia de usuarios
+        if (!usuarios.isEmpty()) {
+            // Creación de cuentas con valores aleatorios
+            for (Usuario usuario : usuarios) {
+                double saldoInicial = Math.random() * 10000; // Valor Double aleatorio
+                String tipoTarjeta = Math.random() < 0.5 ? "Cuenta corriente" : "Caja de ahorro"; // Aleatoriamente elige el tipo de cuenta
+                String afinidad = Math.random() < 0.5 ? "Master Card" : "Visa"; // Aleatoriamente elige el tipo de cuenta
+
+                base.createTarjetaDeCredito(usuario.getCi(), tipoTarjeta, "1234", afinidad, saldoInicial);
+            }
+        } else {
+            throw new Exception("No hay usuarios en la base");
+        }
+    }
+
+    /**
+     * Inserta servicios en la base de datos.
+     *
+     * @param base La base de datos en la que se insertarán los servicios.
+     * 
+     * @author David Gomez
+     */
+    private static void insertServicios(BaseDeDatos base) {
+        base.addServicio("Electricidad", "ANDE");
+        base.addServicio("Agua", "Municipalidad");
+        base.addServicio("Internet", "ProveedorXYZ");
+        base.addServicio("Gas", "GasNaturalSA");
+        base.addServicio("Telefonía", "TelecomunicacionesSA");
+        base.addServicio("Cable", "CablevisionSA");
+        base.addServicio("Seguro de Vehículo", "AseguradoraABC");
+        base.addServicio("Seguro de Salud", "AseguradoraXYZ");
+        base.addServicio("Limpieza", "ServiciosLimpieza");
+        base.addServicio("Mantenimiento de Jardín", "JardinesVerdes");
+        base.addServicio("Seguridad Residencial", "SeguridadTotal");
+        base.addServicio("Educación Online", "EdTechCompany");
+        base.addServicio("Gimnasio", "FitClub");
+        base.addServicio("Reparación de Electrodomésticos", "FixIt");
+        base.addServicio("Asesoría Legal", "BufeteJurídicoXYZ");
+    }
+
 }
