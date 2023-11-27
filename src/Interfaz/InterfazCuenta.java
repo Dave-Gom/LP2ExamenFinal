@@ -38,27 +38,24 @@ public class InterfazCuenta extends javax.swing.JPanel {
             for (Extracto transacciones : ExtractosCuenta){
                 if (transacciones instanceof Transferencia){
                     Transferencia transa = (Transferencia)transacciones;
-                    String monto = transa.getMonto() + "";
-                    jTextArea1.append(transa.getBancoOrigen() + "\t" + transa.getBancoDestino() + "\t\t" + monto + "\n");
+                    jTextArea1.append(transa.getBancoOrigen() + "\t" + transa.getBancoDestino()
+                            + "\t\t" + String.format("%.2f",transa.getMonto())  + "\n");
                     System.out.println();
                 }
                 if (transacciones instanceof PagoServicio){
                     PagoServicio servi = (PagoServicio)transacciones;
-                    String monto = servi.getMonto() + "";
-                    String Recu = jTextArea1.getText();
-                    jTextArea1.append(servi.getNombServicio() + "\t\t\t" + monto + "\n");
+                    jTextArea1.append(servi.getNombServicio() + "\t\t\t" + 
+                            String.format("%.2f",servi.getMonto()) + "\n");
                     System.out.println();
                 }
                 if (transacciones instanceof PagoTarjeta){
                     PagoTarjeta tarjeta = (PagoTarjeta)transacciones;
-                    String monto = tarjeta.getMonto() + "";
-                    String Recu = jTextArea1.getText();
-                    jTextArea1.append(tarjeta.getCuentaOrigen() + "\t\t\t" + monto + "\n");
+                    jTextArea1.append(tarjeta.getCuentaOrigen() + "\t\t\t" + String.format("%.2f",tarjeta.getMonto()) + "\n");
                     System.out.println();
                 }
             }
         }else{
-            jTextArea1.setText("Aun No ha hecho ninguna transaccion :)");
+            jTextArea1.setText("Aun no ha hecho ninguna transaccion :)");
         }
     }
     
@@ -104,6 +101,7 @@ public class InterfazCuenta extends javax.swing.JPanel {
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
+        jTextArea1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jScrollPane1.setViewportView(jTextArea1);
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
