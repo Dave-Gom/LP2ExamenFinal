@@ -42,10 +42,9 @@ public class Servicio {
      * @author David Gomez
      */
     public Double consultar() {
-        if (monto == null) {
-            this.monto = new Random().nextDouble();
-        }
-        return this.monto;
+        if (monto == null) 
+            this.monto = new Random().nextDouble(200000 - 9999 + 1) + 9999;
+        return (double)Math.round(this.monto * 100) / 100;
     }
 
     /**
