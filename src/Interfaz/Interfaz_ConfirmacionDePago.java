@@ -4,7 +4,7 @@
  */
 package Interfaz;
 
-import Cuenta.*;
+import Cuenta.Cuenta;
 import Servicio.Servicio;
 import Usuario.Usuario;
 import java.awt.BorderLayout;
