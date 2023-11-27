@@ -426,4 +426,25 @@ public class BaseDeDatos {
 
         return datos;
     }
+    /** Retorna los servicios Disponibles.
+     * 
+     * @return ArrayList: Lista de Servicios Disponibles Almacenados en
+     * la base de datos.
+     * 
+     * @author Axel Nuñez;
+     */
+    public ArrayList<Servicio> getServicios() {
+        return serviciosDisponibles;
+    }
+    
+     /**
+     * Agrega un servicios a la lista de de servicios Disponibles.
+     *
+     * @param servicioAgregado Servicio: Servicio que se desea agregar.
+     *
+     * @author Axel Nuñez
+     */
+    public void addServiciosDisponibles(Servicio servicioAgregado) {
+        serviciosDisponibles.add(servicioAgregado);
+    }
 }
