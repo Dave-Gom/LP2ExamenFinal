@@ -112,19 +112,5 @@ public class PagoServicio implements Extracto {
         System.out.println(toJsonString());
     }
 
-    /**
-     * Devuelve una instancia de la clase actual que implementa la interfaz
-     * Extracto.
-     *
-     * @return Una instancia de la clase actual que implementa la interfaz
-     * Extracto.
-     * 
-     * @author David Gomez
-     */
-    @Override
-    public Extracto getInstance() {
-        return this;
-    }
-
 
 }

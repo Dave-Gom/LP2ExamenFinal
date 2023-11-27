@@ -11,6 +11,5 @@ package Extracto;
 public interface Extracto {
     
     public void imprimir();
-    public Extracto getInstance();
     
 }
