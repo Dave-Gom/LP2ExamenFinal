@@ -1,7 +1,13 @@
 package Interfaz;
 
 import Cuenta.Cuenta;
+import Extracto.Extracto;
 import Usuario.Usuario;
+import java.util.ArrayList;
+import Cuenta.Transferencia;
+import Servicio.PagoServicio;
+import Servicio.Servicio;
+import TarjetaDeCredito.PagoTarjeta;
 
 /**
  * Clase que extiende de Jpanel lo cual servira para mostrar
@@ -22,10 +28,37 @@ public class InterfazCuenta extends javax.swing.JPanel {
                 break;
             }
         }
+        
         jLabel7.setText(CuentaAct.getTipoCuenta());
         jLabel2.setText(CuentaAct.getCiUser());
         String Saldo = CuentaAct.getSaldo() + "";
         jLabel8.setText("$" + Saldo + "   Gs");
+        ArrayList<Extracto> ExtractosCuenta = user.base.getExtractoCuenta(CuentaAct.getNroCuenta());
+        if (!ExtractosCuenta.isEmpty()){
+            for (Extracto transacciones : ExtractosCuenta){
+                if (transacciones instanceof Transferencia){
+                    Transferencia transa = (Transferencia)transacciones;
+                    String monto = transa.getMonto() + "";
+                    jTextArea1.setText(transa.getBancoDestino() + "    " + monto);
+                    System.out.println();
+
+                }
+                if (transacciones instanceof PagoServicio){
+                    PagoServicio servi = (PagoServicio)transacciones;
+                    String monto = servi.getMonto() + "";
+                    jTextArea1.setText(servi.getNombServicio() + "    " + monto);
+                    System.out.println();
+                }
+                if (transacciones instanceof PagoTarjeta){
+                    PagoTarjeta tarjeta = (PagoTarjeta)transacciones;
+                    String monto = tarjeta.getMonto() + "";
+                    jTextArea1.setText(tarjeta.getCuentaOrigen() + "    " + monto);
+                    System.out.println();
+                }
+            }
+        }else{
+            jTextArea1.setText("Aun No ha hecho ninguna transacciones :)");
+        }
     }
     
 
@@ -52,26 +85,33 @@ public class InterfazCuenta extends javax.swing.JPanel {
 
         jLabel1.setText("jLabel1");
 
-        jPanel1.setBackground(new java.awt.Color(21, 125, 237));
+        jPanel1.setBackground(new java.awt.Color(0, 54, 113));
         jPanel1.setPreferredSize(new java.awt.Dimension(640, 470));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("tipoCuenta");
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Titular:");
 
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Saldo Disponible:");
 
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Monto:");
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("jLabel2");
 
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("jLabel7");
 
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("jLabel8");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
