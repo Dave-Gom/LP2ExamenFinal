@@ -9,8 +9,9 @@ import Servicio.Servicio;
 import javax.swing.JButton;
 /**
  * Clase que extiende de Jpanel lo cual servira para mostrar
- * la interfaz de Pagos
- * @author AlanNuñez
+ * la interfaz de Pagos.
+ * 
+ * @author Axel-Nuñez.
  */
 public class InterfazPagos extends javax.swing.JPanel{
     /**
@@ -216,7 +217,7 @@ public class InterfazPagos extends javax.swing.JPanel{
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
-
+    
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
         String coincidencias = jTextField1.getText();
         ArrayList<Servicio> Prin = user.base.getServicios();
@@ -224,10 +225,11 @@ public class InterfazPagos extends javax.swing.JPanel{
         if(coincidencias != "")
             showOptions(coincidencias,Prin);
     }//GEN-LAST:event_jTextField1KeyReleased
+    
     /**
-     *
-     * @param Coincidencias String: Texto Ingresado por el Usuario.
-     * @param Servicios ArrayList<Servicios> Lista de servicios Disponibles.
+     * Se escarga de establecer los servicios que serán mostrados al usuario.
+     * @param Coincidencias String: Texto ingresado por el usuario.
+     * @param Prin ArrayList<Servicio>: Lista de servicios disponibles en la base de datos.
      */
     public void showOptions(String Coincidencias, ArrayList<Servicio> Prin){
         int contador = 0;
@@ -274,30 +276,64 @@ public class InterfazPagos extends javax.swing.JPanel{
             Principales[k] = coinci[k];
         }
     }
+    
+     /**
+     * Resetea el texto predeterminado una vez el usuario hizo click
+     * en el cuadro de texto.
+     * @param evt FocusEvent: brinda informacion de cuando el usuario
+     * hace click en el cuadro de texto.
+     */
     private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
         jTextField1.setText(""); 
     }//GEN-LAST:event_jTextField1FocusGained
 
+     /**
+     * Resetea el cuadro de texto al texto predeterminado, en caso 
+     * de que el usuario no ingrese ningun texto.
+     * @param evt 
+     */
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
         jTextField1.setText("Seleccione un servicio");
         
     }//GEN-LAST:event_jTextField1FocusLost
 
+     /**
+     * Configuracion de la accion del Boton asi como instanciacion del siguiente panel
+     * (confirmacionDePago).
+     * @param evt ActionEvent: brinda informacion sobre la accion del boton.
+     */
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         Interfaz_ConfirmacionDePago inter = new Interfaz_ConfirmacionDePago(user,Principales[0]);
         showPanel(inter);
     }//GEN-LAST:event_jButton8ActionPerformed
 
+     /**
+     * Configuracion de la accion del Boton asi como instanciacion del siguiente panel
+     * (confirmacionDePago).
+     * @param evt ActionEvent: brinda informacion sobre la accion del boton.
+     */
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         Interfaz_ConfirmacionDePago inter = new Interfaz_ConfirmacionDePago(user,Principales[1]);
         showPanel(inter);
     }//GEN-LAST:event_jButton7ActionPerformed
 
+     /**
+     * Configuracion de la accion del Boton asi como instanciacion del siguiente panel
+     * (confirmacionDePago).
+     * @param evt ActionEvent: brinda informacion sobre la accion del boton.
+     */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         Interfaz_ConfirmacionDePago inter = new Interfaz_ConfirmacionDePago(user,Principales[2]);
         showPanel(inter);
     }//GEN-LAST:event_jButton4ActionPerformed
     
+     /**
+     * Ordena la lista de servicio que será mostrada al Usuario.
+     * @param coin Array(int): Lista de coincidencias de los servicios.
+     * @param Principales Array(Servicio): Lista de Servicios a ser mostrada al usuario.
+     * @param cant int: Cantidad de elemento con coincidencias > 1.-
+     * @return 
+     */
     public Servicio[] ordenarServicio(int coin[], Servicio Principales[], int cant){
         if(cant <= 2){
             if(coin[0] < coin[1]){
@@ -327,7 +363,11 @@ public class InterfazPagos extends javax.swing.JPanel{
         return Principales;
     }
     
-
+    
+    /**
+     * Reemplaza JpanelActual(dinamico) por el que siguiente a ser mostrado.
+     * @param jp Panel a ser agregado en el contenido dinamico.
+     */
     private void showPanel(JPanel jp){
         jp.setSize(585,600);
         jp.setLocation(0,0);
