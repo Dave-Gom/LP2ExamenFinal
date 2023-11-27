@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 public class InterfazTransferencias extends javax.swing.JPanel {
 
     /**
-     * Creates new form InterfazTransferencias
+     * Creates new form InterfazTransferencia
      * @param user
      */
     Cuenta cuentaOrigen, cuentaDestino;
