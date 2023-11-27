@@ -1,5 +1,6 @@
 package Interfaz;
 import BaseDeDatos.BaseDeDatos;
+import Cuenta.Cuenta;
 import Usuario.Usuario;
 /**
  *
@@ -206,17 +207,18 @@ public class InterfazLogin1 extends javax.swing.JFrame {
         //ni muy largo, debido a que puede generar
         //un desbordamiento
         if (jTextField1.getText() != null && jTextField1.getText().length() < 10){
-            Usuario user = B1.getUserByCI(jTextField1.getText());
+            Cuenta cuenta = B1.getCuentaByNro(jTextField1.getText());
+            Usuario user = cuenta.getTitular();
             if (user != null && validarPin(user,jTextField2.getText())){
                 this.setVisible(false);
                 InterfazEstatica p1 = new InterfazEstatica(user);
                 p1.setVisible(true);
             }else{
-                System.out.println("CI o PIN de cuenta invalida");
+                System.out.println("Nro de cuenta o PIN de cuenta invalida");
             }
                 
         }else{
-            System.out.println("CI o PIN de cuenta invalida");
+            System.out.println("Nro de cuenta o PIN de cuenta invalida");
         }
 
     }//GEN-LAST:event_CuentaActionPerformed
