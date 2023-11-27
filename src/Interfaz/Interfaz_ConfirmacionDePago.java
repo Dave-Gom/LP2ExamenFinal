@@ -21,7 +21,7 @@ public class Interfaz_ConfirmacionDePago extends javax.swing.JPanel {
      * Creates new form Interfaz_ConfirmacionDePago
      */
     private Usuario user;
-    Servicio principal;
+    private Servicio principal;
     public Interfaz_ConfirmacionDePago(Usuario user, Servicio principal) {
         this.user = user;
         this.principal = principal;
@@ -186,12 +186,19 @@ public class Interfaz_ConfirmacionDePago extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Cuenta  cuentaUser = user.base.getCuentas().get(0);
-        double Saldo = cuentaUser.getSaldo();
-        System.out.println("Saldo:" +Saldo +" "+user.getPinTransaccional());
+        //Cuenta  cuentaUser = user.getCuentas().get(0);
+        //double Saldo = cuentaUser.getSaldo();
+        //System.out.println("Saldo:" +Saldo +" "+user.getPinTransaccional());
         double Pago = principal.consultar();
+        try{
+            this.principal.pagar(user.getCuentas().get(0));
+            JOptionPane.showMessageDialog(null,"El pago se realizo correctamente.");
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this,e.getMessage());
+        }
+        /*
         if(Saldo < Pago)
-            JOptionPane.showMessageDialog(null,"El saldo es Insuficiente para realizar el pago");
+            
         else{
             //String Pass = jTextField1.getText();
             
@@ -200,12 +207,13 @@ public class Interfaz_ConfirmacionDePago extends javax.swing.JPanel {
             String pass = new String(arrayC);
             //jPasswordField1
             if(pass.equals(user.getPinTransaccional())){
-                JOptionPane.showMessageDialog(null,"El pago se realizo correctamente.");
-                user.base.addPagoServicios(new PagoServicio(principal.getNombre(),Pago,cuentaUser.getNroCuenta()));
+                
+                
+                
             }else{
                 JOptionPane.showMessageDialog(null,"El pin Transaccional es incorrecto.");
             }
-        }
+        ¨}*/
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -227,7 +235,7 @@ public class Interfaz_ConfirmacionDePago extends javax.swing.JPanel {
         jPanel1.repaint();
     }
     public void resumenDePago(){
-        jLabel5.setText("Monto: $ " + principal.consultar() + "GS");
+        jLabel5.setText("Monto: $ " + principal.consultar() + " GS");
         jLabel6.setText("Servicio: "+  principal.getNombre());
         jLabel7.setText("Cuenta: "+  user.getApellido() + "/" + user.getCi());
     }
