@@ -2,9 +2,10 @@ package Interfaz;
 import java.lang.Thread;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 /**
- *
- * @author User
+ *  Hilo que se encarga de precargar una seccion del panel de ayuda.
+ * @author Axel_Nuñez
  */
 public class hilodos extends javax.swing.JPanel implements Runnable{
 
@@ -14,7 +15,10 @@ public class hilodos extends javax.swing.JPanel implements Runnable{
     public hilodos(){
         initComponents();
     }
-
+    
+    /**
+     * Metodo para correr el hilo.
+     */
     public void run(){
         int contador = 0;
         contador++;

@@ -7,15 +7,19 @@ import javax.swing.JPanel;
  * Clase que extiende de Jpanel lo cual servira para mostrar
  * la interfaz de InterfazAcercaDelSistema
  * 
- * @author AlanNuñez
+ * @author Axel-Nuñez.
  */
 public class InterfazAcercaDelSistema extends javax.swing.JPanel {
 
     /**
-     * Creates new form Ayuda
+     * Metodo Constructor.
      */
     public InterfazAcercaDelSistema(){
         initComponents();
+        
+        /* Instanciación y declaracion de los hilos que conformarán
+           sección del panel de ayuda */
+        
         hilouno hilo1 = new hilouno();
         showPanel(hilo1,jPanel4);
         
@@ -26,7 +30,11 @@ public class InterfazAcercaDelSistema extends javax.swing.JPanel {
         showPanel(hilo3,jPanel7);
         
     }
-
+    /**
+     * * Reemplaza JpanelActual(dinamico) por el que siguiente a ser mostrado.
+     * @param jp Panel a ser agregado en el contenido dinamico.
+     * @param principal panel en el que se agregará jp.
+     */
     private void showPanel(JPanel jp, JPanel principal){
         jp.setSize(585,600);
         jp.setLocation(0,0);

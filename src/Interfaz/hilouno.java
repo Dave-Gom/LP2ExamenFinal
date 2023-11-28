@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package Interfaz;
 
 import java.awt.Desktop;
@@ -11,9 +7,10 @@ import java.util.logging.Logger;
 import java.lang.Thread;
 import java.net.URI;
 import java.net.URISyntaxException;
+
 /**
- *
- * @author User
+ *  Hilo que se encarga de precargar una seccion del panel de ayuda.
+ * @author Axel_Nuñez
  */
 public class hilouno extends javax.swing.JPanel implements Runnable{
 
@@ -23,6 +20,10 @@ public class hilouno extends javax.swing.JPanel implements Runnable{
     public hilouno() {
         initComponents();
     }
+    
+     /**
+     * Metodo para correr el hilo.
+     */
     public void run(){
         int contador = 0;
         contador++;
@@ -104,12 +105,19 @@ public class hilouno extends javax.swing.JPanel implements Runnable{
                 .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    /**
+     * Configuracion de la accion del Boton para abrir la documentacion.
+     * @param evt ActionEvent: brinda informacion sobre la accion del boton.
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         abrirEnlace("www.google.com.ar");
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    // Método para abrir el enlace en el navegador predeterminado
+    /**
+     * Método para abrir el enlace en el navegador predeterminado.
+     * @param url String: Ubicación de la documentacion.
+     */
     private static void abrirEnlace(String url) {
         try {
             Desktop.getDesktop().browse(new URI(url));
