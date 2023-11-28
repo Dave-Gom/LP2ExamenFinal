@@ -17,7 +17,7 @@ public class InterfazHome extends javax.swing.JPanel{
 
     /**
      * metodo constructor que se encarga de generar todos los jlabels
-     * @param user 
+     * @param user usuario
      */
     public InterfazHome(Usuario user) {
         initComponents();

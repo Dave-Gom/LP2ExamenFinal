@@ -22,7 +22,7 @@ public class InterfazCuenta extends javax.swing.JPanel {
     /**
      * Metodo Contructor el cual se encarga de cargar
      * los labels y el jtextarea
-     * @param user 
+     * @param user usuario
      */
     public InterfazCuenta(Usuario user) {
         initComponents();

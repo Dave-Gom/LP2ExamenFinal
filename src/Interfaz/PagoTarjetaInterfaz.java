@@ -22,6 +22,8 @@ public class PagoTarjetaInterfaz extends javax.swing.JPanel {
 
     /**
      * Creates new form PagoTarjetaInterfaz
+     * @param tarjeta tarjeta de crédito
+     * @param contenidoDinamico contenido dinámico
      */
     public PagoTarjetaInterfaz(TarjetaDeCredito tarjeta, javax.swing.JPanel contenidoDinamico) {
         initComponents();

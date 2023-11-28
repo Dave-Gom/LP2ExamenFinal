@@ -56,6 +56,7 @@ public class BaseDeDatos {
      * @param nuevoUser El usuario que se va a agregar.
      *
      * @author David Gomez
+     * @throws java.lang.Exception excepción en caso de existir ci duplicado
      */
     public void addUsuario(Usuario nuevoUser) throws Exception {
         for (Usuario usuario : usuarios) {
@@ -125,6 +126,7 @@ public class BaseDeDatos {
      * @param nuevaCuenta La cuenta que se va a agregar.
      *
      * @author David Gomez
+     * @throws java.lang.Exception excepción en caso de existir nroCuenta duplicado
      */
     public void addCuenta(Cuenta nuevaCuenta) throws Exception {
         if (getCuentaByNro(nuevaCuenta.getNroCuenta()) != null) {

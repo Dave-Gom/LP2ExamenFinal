@@ -226,7 +226,7 @@ public class InterfazPagos extends javax.swing.JPanel{
     /**
      * Se escarga de establecer los servicios que serán mostrados al usuario.
      * @param Coincidencias String: Texto ingresado por el usuario.
-     * @param Prin ArrayList<Servicio>: Lista de servicios disponibles en la base de datos.
+     * @param Prin Lista de servicios disponibles en la base de datos.
      */
     public void showOptions(String Coincidencias, ArrayList<Servicio> Prin){
         int contador = 0;
@@ -328,8 +328,8 @@ public class InterfazPagos extends javax.swing.JPanel{
      * Ordena la lista de servicio que será mostrada al Usuario.
      * @param coin Array(int): Lista de coincidencias de los servicios.
      * @param Principales Array(Servicio): Lista de Servicios a ser mostrada al usuario.
-     * @param cant int: Cantidad de elemento con coincidencias > 1.-
-     * @return 
+     * @param cant int: Cantidad de elemento con coincidencias mayor que 1.-
+     * @return retorna Servicio[]
      */
     public Servicio[] ordenarServicio(int coin[], Servicio Principales[], int cant){
         if(cant <= 2){

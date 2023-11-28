@@ -17,7 +17,6 @@ public class InterfazTransferencias extends javax.swing.JPanel {
 
     /**
      * Creates new form InterfazTransferencia
-     * @param user
      */
     Cuenta cuentaOrigen, cuentaDestino;
     Double monto;

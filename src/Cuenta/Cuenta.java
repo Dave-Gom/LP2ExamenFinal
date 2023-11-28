@@ -64,7 +64,7 @@ public class Cuenta {
      *
      * Este método retorna el saldo de la cuenta
      *
-     * @param saldo
+     * @param saldo saldo de la cuenta
      *
      * @author David Gomez
      */

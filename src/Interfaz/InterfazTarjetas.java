@@ -28,7 +28,8 @@ public class InterfazTarjetas extends javax.swing.JPanel {
     /**
      * Creates new form InterfazTarjetas
      *
-     * @param misTarjetas lista de tarjetas del usuario
+     * @param miTarjeta tarjeta del usuario
+     * @param contenidoDinamico contenido dinámico
      */
     public InterfazTarjetas(TarjetaDeCredito miTarjeta, javax.swing.JPanel contenidoDinamico) {
 

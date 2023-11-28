@@ -14,7 +14,7 @@ public class InterfazLogin1 extends javax.swing.JFrame {
 
     /**
      * metodo constructor
-     * @param B1 
+     * @param B1 base de datos
      */
     public InterfazLogin1(BaseDeDatos B1) {
         this.B1 = B1;
@@ -296,8 +296,8 @@ public class InterfazLogin1 extends javax.swing.JFrame {
     /**
      * Clase que se encarga de comparar si las contraseñas son las mismas
      * Por lo que validas
-     * @param User
-     * @param Pin
+     * @param User usuario
+     * @param Pin pin
      * @return boolean
      */
     public boolean validarPin(Usuario User, String Pin){

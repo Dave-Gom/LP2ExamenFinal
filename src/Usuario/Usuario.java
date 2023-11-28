@@ -44,9 +44,8 @@ public class Usuario {
      * @param miBase           direccion de memoria de la base en la que esta
      *                         almacenado el usuario
      * 
-     * @throws Exeption si ya existe el usuario con la misma ci en la base;
-     * 
      * @author David Gomez
+     * @throws java.lang.Exception excepción
      */
     public Usuario(String ci, String pin, String pinTransaccional, String email, String nacionalidad, String nombre,
             String apellido, Date fechaNacimiento, String telefono, BaseDeDatos miBase) throws Exception {
