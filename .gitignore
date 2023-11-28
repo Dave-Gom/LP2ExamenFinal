@@ -1,0 +1,12 @@
+/nbproject/private/
+/build/
+
+*.class
+.DS_Store
+.netbeams*
+
+/target
+/nbproject/
+/dist/
+/asdf/nbproject/private/
+/Lp2/nbproject/private/
