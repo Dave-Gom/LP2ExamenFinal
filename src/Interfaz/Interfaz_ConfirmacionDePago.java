@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package Interfaz;
 
 import Cuenta.Cuenta;
@@ -12,8 +8,9 @@ import javax.swing.JPanel;
 import javax.swing.JOptionPane;
 import Servicio.*;
 /**
- *
- * @author USER-PC
+ * Clase que extiende de Jpanel, la cual se encargará de mostrar 
+ * la interfaz de confirmaciónDePagos.
+ * @author Axel-Nuñez.
  */
 public class Interfaz_ConfirmacionDePago extends javax.swing.JPanel {
 
@@ -183,49 +180,52 @@ public class Interfaz_ConfirmacionDePago extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
+     
+    /**
+     * Verificamos que los ingresamos por el usuario(pin transaccional)
+     * sean correctos, asi como tambien el Saldo para realizar el Pago.
+     * Además, se actualizamos la bandeja de Pagos del usuario. 
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        //Cuenta  cuentaUser = user.getCuentas().get(0);
-        //double Saldo = cuentaUser.getSaldo();
-        //System.out.println("Saldo:" +Saldo +" "+user.getPinTransaccional());
         double Pago = principal.consultar();
-        try{
-            this.principal.pagar(user.getCuentas().get(0));
-            JOptionPane.showMessageDialog(null,"El pago se realizo correctamente.");
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(this,e.getMessage());
-        }
-        /*
-        if(Saldo < Pago)
-            
-        else{
-            //String Pass = jTextField1.getText();
-            
-            //System.out.println("jTextField1.getText()" + Pass);
-            char[] arrayC = jPasswordField1.getPassword();
-            String pass = new String(arrayC);
-            //jPasswordField1
-            if(pass.equals(user.getPinTransaccional())){
-                
-                
-                
-            }else{
-                JOptionPane.showMessageDialog(null,"El pin Transaccional es incorrecto.");
+        char[] arrayC = jPasswordField1.getPassword();
+        String pass = new String(arrayC);
+        
+        /* Verifica si el pin transaccional ingresado es el correcto. */
+        if(pass.equals(user.getPinTransaccional()) && !pass.equals("")){              
+            try{
+                this.principal.pagar(user.getCuentas().get(0));
+                JOptionPane.showMessageDialog(null,"El pago se realizo correctamente.");
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(this,e.getMessage());
             }
-        ¨}*/
-        
-        
+        }else
+            JOptionPane.showMessageDialog(null,"El pin Transaccional es incorrecto.");
     }//GEN-LAST:event_jButton1ActionPerformed
-
+     
+    /**
+     * Brinda informacion del password field.
+     * @param evt ActionEvent: brinda informacion sobre la accion del passwordField.
+     */
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordField1ActionPerformed
-
+    
+    /**
+     * Resetea el texto predeterminado una vez el usuario hizo click
+     * en el cuadro de texto.
+     * @param evt FocusEvent: brinda informacion de cuando el usuario
+     * hace click en el cuadro de texto.
+     */
     private void jPasswordField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField1FocusGained
         jPasswordField1.setText("");
     }//GEN-LAST:event_jPasswordField1FocusGained
-                                                                   
+    
+     /**
+     * Reemplaza JpanelActual(dinamico) por el que siguiente a ser mostrado.
+     * @param jp Panel a ser agregado en el contenido dinamico.
+     */
     private void showPanel(JPanel jp){
         jp.setSize(620,500);
         jp.setLocation(0,0);
@@ -234,6 +234,11 @@ public class Interfaz_ConfirmacionDePago extends javax.swing.JPanel {
         jPanel1.revalidate();
         jPanel1.repaint();
     }
+    
+     /**
+     * Imprime en pantalla el resumen del pago a realizar, como el monto,
+     * el servicio a pagar, y la cuenta en la que se realiza el pago.
+     */
     public void resumenDePago(){
         jLabel5.setText("Monto: $ " + principal.consultar() + " GS");
         jLabel6.setText("Servicio: "+  principal.getNombre());
